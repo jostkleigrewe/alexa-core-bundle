@@ -21,7 +21,7 @@
     "require": {
         "php": "^8.0.0",
         "jostkleigrewe/intent-core-bundle": "dev-develop",
-        "jostkleigrewe/ssml": "dev-develop"
+        "jostkleigrewe/lib-ssml": "dev-develop"
     },
     "require-dev": {
     },

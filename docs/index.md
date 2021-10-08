@@ -1,10 +1,10 @@
-Installation
+Documentation 
 ============
 
-Applications that use Symfony Flex
+Alexa Core Bundle
 ----------------------------------
 
-Open a command console, enter your project directory and execute:
+lorem ipsum
 
 ```console
 $ composer require jostkleigrewe/alexa-core-bundle

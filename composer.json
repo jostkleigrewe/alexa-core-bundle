@@ -20,8 +20,6 @@
     },
     "require": {
         "php": "^8.2",
-        "jostkleigrewe/intent-core-bundle": "dev-develop",
-        "jostkleigrewe/lib-ssml": "dev-develop",
         "symfony/framework-bundle": "^6.3",
         "symfony/config": "^6.3"
     },

@@ -19,12 +19,11 @@
         "sort-packages": true
     },
     "require": {
-        "php": "^8.0.0",
-        "jms/serializer-bundle": "^4.0.0",
+        "php": "^8.2",
         "jostkleigrewe/intent-core-bundle": "dev-develop",
         "jostkleigrewe/lib-ssml": "dev-develop",
-        "symfony/orm-pack": "dev-main",
-        "symfony/framework-bundle": "^5.0"
+        "symfony/framework-bundle": "^6.3",
+        "symfony/config": "^6.3"
     },
     "conflict": {
     },

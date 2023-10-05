@@ -47,6 +47,6 @@ class JostkleigreweAlexaCoreExtension extends Extension implements ExtensionInte
      */
     public function getAlias(): string
     {
-        return 'amelia_alexa_core';
+        return 'jostkleigrewe_alexa_core';
     }
 }

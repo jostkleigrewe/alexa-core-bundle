@@ -21,7 +21,7 @@ class IntentPass implements CompilerPassInterface
     /**
      * @param ContainerBuilder $container
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
 
         // always first check if the primary service is defined

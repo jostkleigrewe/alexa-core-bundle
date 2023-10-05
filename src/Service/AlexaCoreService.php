@@ -22,7 +22,7 @@ class AlexaCoreService
      * @param AlexaCoreManager $alexaCoreManager
      */
     public function __construct(
-//        private AlexaCoreManager $alexaCoreManager
+        private AlexaCoreManager $alexaCoreManager
     ) {
     }
 
@@ -34,8 +34,6 @@ class AlexaCoreService
      */
     public function getResponse(): JsonResponse
     {
-        return JsonResponse::fromJsonString('{}');
-
         try {
 
             $session = $this->getAlexaCoreManager()->getAlexaSession();

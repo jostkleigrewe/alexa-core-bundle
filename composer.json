@@ -23,7 +23,8 @@
         "doctrine/orm": "^2.15",
         "symfony/config": "^6.3",
         "symfony/framework-bundle": "^6.3",
-        "symfony/serializer": "^6.3"
+        "symfony/serializer": "^6.3",
+        "symfony/workflow": "7.0.x-dev"
     },
     "conflict": {
     },

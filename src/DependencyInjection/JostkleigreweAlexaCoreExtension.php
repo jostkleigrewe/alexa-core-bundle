@@ -10,13 +10,13 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
- * Class AmeliaAlexaCoreExtension
+ * Class Jostkleigrewe
  * 
  * @package   Jostkleigrewe\AlexaCoreBundle\DependencyInjection
  * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
  * @copyright 2021 Sven Jostkleigrewe
  */
-class AmeliaAlexaCoreExtension extends Extension implements ExtensionInterface
+class JostkleigreweAlexaCoreExtension extends Extension implements ExtensionInterface
 {
 
     /**
@@ -45,7 +45,7 @@ class AmeliaAlexaCoreExtension extends Extension implements ExtensionInterface
     /**
      * @return string
      */
-    public function getAlias()
+    public function getAlias(): string
     {
         return 'amelia_alexa_core';
     }

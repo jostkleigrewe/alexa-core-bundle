@@ -25,7 +25,7 @@ class JostkleigreweAlexaCoreBundle extends Bundle
      * This method can be overridden to register compilation passes,
      * other extensions, ...
      */
-    public function build(ContainerBuilder $container)
+    public function build(ContainerBuilder $container): void
     {
 
         //  add compiler pass

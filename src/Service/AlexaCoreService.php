@@ -16,21 +16,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class AlexaCoreService
 {
-
-    /**
-     * @var AlexaCoreManager $alexaCoreManager
-     */
-    private $alexaCoreManager;
-
     /**
      * AlexaCoreService constructor.
      *
      * @param AlexaCoreManager $alexaCoreManager
      */
     public function __construct(
-        AlexaCoreManager $alexaCoreManager
+//        private AlexaCoreManager $alexaCoreManager
     ) {
-        $this->alexaCoreManager = $alexaCoreManager;
     }
 
     /**
@@ -41,6 +34,8 @@ class AlexaCoreService
      */
     public function getResponse(): JsonResponse
     {
+        return JsonResponse::fromJsonString('{}');
+
         try {
 
             $session = $this->getAlexaCoreManager()->getAlexaSession();

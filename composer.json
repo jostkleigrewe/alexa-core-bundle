@@ -20,7 +20,7 @@
     },
     "require": {
         "php": "^8.2",
-        "doctrine/orm": "3.0.x-dev",
+        "doctrine/orm": "^2.10",
         "symfony/config": "^6.3",
         "symfony/framework-bundle": "^6.3"
     },

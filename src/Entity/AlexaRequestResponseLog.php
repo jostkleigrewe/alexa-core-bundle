@@ -20,13 +20,13 @@ class AlexaRequestResponseLog
 
     /**
      * @var string $request
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="json")
      */
     private $request;
 
     /**
      * @var string $response
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="json")
      */
     private $response;
 

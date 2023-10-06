@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Jostkleigrewe\AlexaCoreBundle\Response;
 
-use JMS\Serializer\Annotation;
+use Symfony\Component\Serializer\Annotation;
 
 /**
  * Class AlexaResponse
@@ -23,7 +23,7 @@ class AlexaResponse
      *
      * @var string $version
      *
-     * @Annotation\Type("string")
+     * Annotation\Type("string")
      * @Annotation\SerializedName("version")
      */
     private $version;

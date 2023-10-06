@@ -99,6 +99,15 @@ class AlexaResponseService
                 ', aufgetreten: ' . $e->getMessage()
             );
 
+        if ($e->getPrevious()) {
+            $alexaResponse->getResponse()->getCard()
+                ->addText(
+                    'Vorausgegangen ist ein Fehler in der Datei ' . basename($e->getPrevious()->getFile()) .
+                    ', Zeile ' . $e->getPrevious()->getLine() .
+                    ', aufgetreten: ' . $e->getPrevious()->getMessage()
+                );
+        }
+
         $alexaResponse->setStatusCode(500);
 
         return $alexaResponse;

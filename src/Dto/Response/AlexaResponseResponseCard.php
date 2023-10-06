@@ -113,6 +113,12 @@ class AlexaResponseResponseCard
         return $this;
     }
 
+    public function addText(string $text): self
+    {
+        $this->text .= $text;
+        return $this;
+    }
+
     public function getImage(): AlexaResponseResponseCardImage
     {
         return $this->image;

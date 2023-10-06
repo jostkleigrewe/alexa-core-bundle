@@ -75,11 +75,20 @@ class AlexaRequestService
                 /** @var AlexaRequest $alexaRequest */
             }
             catch (\Throwable $e) {
-                throw new AlexaCoreException(
-                    'Error occurred while deserializing symfony-request to populate alexa-request.',
-                    0,
-                    $e
-                );
+
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    throw new AlexaCoreException(
+                        'Ungültiges JSON im symfony-request erhalten: ' . json_last_error_msg(),
+                        0,
+                        $e
+                    );
+                } else {
+                    throw new AlexaCoreException(
+                        'Error occurred while deserializing symfony-request to populate alexa-request.',
+                        0,
+                        $e
+                    );
+                }
             }
 
             //  set as current alexa-request

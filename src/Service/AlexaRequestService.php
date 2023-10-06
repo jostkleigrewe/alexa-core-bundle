@@ -8,19 +8,21 @@ use Jostkleigrewe\AlexaCoreBundle\Exception\AlexaCoreException;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use LogicException;
 
 /**
  * Class AlexaRequestService
  *
- * @package Jostkleigrewe\AlexaCoreBundle\Service
- * @author Sven Jostkleigrewe <sven@jostkleigrewe.com>
+ * @package   Jostkleigrewe\AlexaCoreBundle\Service\AlexaCoreService
+ * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
+ * @copyright 2023 Sven Jostkleigrewe
  */
 class AlexaRequestService
 {
 
     const REQUEST_FORMAT = 'json';
 
-    private AlexaRequest $alexaRequest;
+    private ?AlexaRequest $alexaRequest = null;
 
     public function __construct(
         private readonly SerializerInterface $serializer,
@@ -74,7 +76,7 @@ class AlexaRequestService
             }
             catch (\Throwable $e) {
                 throw new AlexaCoreException(
-                    'Error occured while deserializing symfony-request to polulate alexa-request.',
+                    'Error occurred while deserializing symfony-request to populate alexa-request.',
                     0,
                     $e
                 );
@@ -100,6 +102,11 @@ class AlexaRequestService
     }
 
     /**
+     * @return Request
+     */
+
+    /**
+     * @throws LogicException
      * @return Request
      */
     private function getSymfonyRequest(): Request

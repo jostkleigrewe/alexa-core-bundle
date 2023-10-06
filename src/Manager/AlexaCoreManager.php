@@ -22,7 +22,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
  * @copyright 2023 Sven Jostkleigrewe
  */
-class AlexaCoreManager
+readonly class AlexaCoreManager
 {
 
     public function __construct(

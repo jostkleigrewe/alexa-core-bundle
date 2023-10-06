@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Jostkleigrewe\AlexaCoreBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -16,29 +17,29 @@ class AlexaDevice
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true, nullable=false, options={"collate"="utf8_unicode_ci", "charset"="utf8"})
      */
-    private $deviceId;
+    private string $deviceId;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\ManyToMany(targetEntity="Jostkleigrewe\AlexaCoreBundle\Entity\AlexaUser", inversedBy="alexaDevices")
      * @ORM\JoinTable(name="alexa_users_devices")
      */
-    private $alexaUsers;
+    private ArrayCollection $alexaUsers;
 
     /**
      * AlexaDevice constructor.
      */
     public function __construct() {
-        $this->alexaUsers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->alexaUsers = new ArrayCollection();
     }
 
     /**

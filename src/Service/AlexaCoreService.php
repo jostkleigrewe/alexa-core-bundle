@@ -10,9 +10,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 /**
  * Class AlexaCoreService
  *
- * @package   Jostkleigrewe\AlexaCoreBundle\Service
+ * @package   Jostkleigrewe\AlexaCoreBundle\Service\AlexaCoreService
  * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
- * @copyright 2021 Sven Jostkleigrewe
+ * @copyright 2023 Sven Jostkleigrewe
  */
 class AlexaCoreService
 {

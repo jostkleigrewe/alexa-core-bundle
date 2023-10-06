@@ -28,7 +28,7 @@ class AlexaResponseResponseCardImage
      * @var string $smallImageUrl
      * @Annotation\SerializedName("smallImageUrl")
      */
-    private string $smallImageUrl;
+    private string $smallImageUrl = '';
 
     /**
      * Displayed on larger screens 	1200w x 800h
@@ -36,7 +36,7 @@ class AlexaResponseResponseCardImage
      * @var string $largeImageUrl
      * @Annotation\SerializedName("largeImageUrl")
      */
-    private string $largeImageUrl;
+    private string $largeImageUrl = '';
 
     public function getSmallImageUrl(): string
     {

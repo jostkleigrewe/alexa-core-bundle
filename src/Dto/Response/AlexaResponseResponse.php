@@ -53,16 +53,16 @@ class AlexaResponseResponse
      *     false: Alexa opens the microphone for a few seconds to listen for the user's response. When you use false, include a reprompt to give the user a second chance to respond.
      *     null / undefined: Behavior depends on the type of device and the content of the response.
      *
-     * @var bool $shouldEndSession
+     * @var null|bool $shouldEndSession
      *
      * @Annotation\SerializedName("shouldEndSession")
      */
-    private bool $shouldEndSession;
+    private ?bool $shouldEndSession;
 
     /**
      * An array of directives specifying device-level actions to take using a particular interface
      *
-     * @var ArrayCollection<Jostkleigrewe\AlexaCoreBundle\Dto\Response\Directive\BaseDirective> $directives
+     * @var ArrayCollection<DirectiveInterface> $directives
      * @Annotation\SerializedName("directives")
      */
     private ArrayCollection $directives;
@@ -138,29 +138,22 @@ class AlexaResponseResponse
      */
     public function isShouldEndSession(): bool
     {
-        return $this->shouldEndSession;
+        return $this->shouldEndSession===true;
     }
 
-    /**
-     * @return bool
-     */
-    public function getShouldEndSession(): bool
+    public function getShouldEndSession(): ?bool
     {
         return $this->shouldEndSession;
     }
 
-    /**
-     * @param bool $shouldEndSession
-     * @return self
-     */
-    public function setShouldEndSession(bool $shouldEndSession): self
+    public function setShouldEndSession(?bool $shouldEndSession): self
     {
         $this->shouldEndSession = $shouldEndSession;
         return $this;
     }
 
     /**
-     * @return ArrayCollection
+     * @return ArrayCollection<DirectiveInterface>
      */
     public function getDirectives(): ArrayCollection
     {

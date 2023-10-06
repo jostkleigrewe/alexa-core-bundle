@@ -37,7 +37,7 @@ class AlexaResponseResponseCard
      * @var string $title
      * @Annotation\SerializedName("title")
      */
-    private string $title;
+    private string $title = '';
 
     /**
      * A string containing the contents of a Simple card
@@ -45,7 +45,7 @@ class AlexaResponseResponseCard
      * @var string $content
      * @Annotation\SerializedName("content")
      */
-    private string $content;
+    private string $content = '';
 
     /**
      * A string containing the text content for a Standard card
@@ -53,7 +53,7 @@ class AlexaResponseResponseCard
      * @var string $text
      * @Annotation\SerializedName("text")
      */
-    private string $text;
+    private string $text = '';
 
     /**
      * An image object that specifies the URLs for the image to display on a Standard card.
@@ -67,7 +67,6 @@ class AlexaResponseResponseCard
     {
         $this->type = self::TYPE_SIMPLE;
         $this->image = new AlexaResponseResponseCardImage();
-
     }
 
     public function getType(): string

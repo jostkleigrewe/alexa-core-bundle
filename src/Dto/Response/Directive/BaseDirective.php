@@ -2,7 +2,6 @@
 declare(strict_types = 1);
 
 namespace Jostkleigrewe\AlexaCoreBundle\Dto\Response\Directive;
-
 use Symfony\Component\Serializer\Annotation;
 use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequestRequestIntent;
 

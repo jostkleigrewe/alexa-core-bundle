@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace Jostkleigrewe\AlexaCoreBundle\Dto\Response;
 
 use Symfony\Component\Serializer\Annotation;
+use InvalidArgumentException;
 
 /**
  * Class AlexaResponseResponseOutputSpeech
@@ -18,8 +19,9 @@ class AlexaResponseResponseOutputSpeech
 {
 
     const TYPE_TEXT = 'PlainText';
-    const TYPE_SSML= 'SSML';
-    const TEXT_DEFAULT= 'Keine Information vorhanden';
+    const TYPE_SSML = 'SSML';
+
+    const TEXT_DEFAULT = 'Keine Information vorhanden';
 
     const PLAY_BEHAVIOR_ENQUEUE = 'ENQUEUE';                        // Add this speech to the end of the queue.
     const PLAY_BEHAVIOR_REPLACE_ALL = 'REPLACE_ALL';                // Immediately begin playback of this speech
@@ -41,7 +43,7 @@ class AlexaResponseResponseOutputSpeech
      * @var string $ssml
      * @Annotation\SerializedName("ssml")
      */
-    private string $ssml;
+    private string $ssml = '';
 
     /**
      * A string that determines the queuing and playback of this output speech.
@@ -66,8 +68,11 @@ class AlexaResponseResponseOutputSpeech
 
     public function setType(string $type): AlexaResponseResponseOutputSpeech
     {
-        $this->type = $type;
+        if (!in_array($type, [self::TYPE_TEXT, self::TYPE_SSML], true)) {
+            throw new InvalidArgumentException('Invalid type: '.$type);
+        }
 
+        $this->type = $type;
         return $this;
     }
 
@@ -79,7 +84,6 @@ class AlexaResponseResponseOutputSpeech
     public function setText(string $text): self
     {
         $this->text = $text;
-
         return $this;
     }
 
@@ -91,11 +95,10 @@ class AlexaResponseResponseOutputSpeech
     public function setSsml(string $ssml): self
     {
         $this->ssml = $ssml;
-
         return $this;
     }
 
-     public function getPlayBehavior(): string
+    public function getPlayBehavior(): string
     {
         return $this->playBehavior;
     }
@@ -103,7 +106,6 @@ class AlexaResponseResponseOutputSpeech
     public function setPlayBehavior(string $playBehavior): self
     {
         $this->playBehavior = $playBehavior;
-
         return $this;
     }
 }

@@ -18,11 +18,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class AlexaResponseService
 {
-
-
-    /**
-     * @var AlexaResponse $alexaResponse
-     */
     private ?AlexaResponse $alexaResponse;
 
     /**

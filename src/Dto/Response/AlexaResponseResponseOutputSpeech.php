@@ -1,16 +1,17 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Response;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Response;
 
-use JMS\Serializer\Annotation;
+use Symfony\Component\Serializer\Annotation;
 
 /**
  * Class AlexaResponseResponseOutputSpeech
  *
- * @package Jostkleigrewe\AlexaCoreBundle\Response
- * @author Sven Jostkleigrewe <sven@jostkleigrewe.com>
- * @copyright 2020 Sven Jostkleigrewe
+ * @package   Jostkleigrewe\AlexaCoreBundle
+ * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
+ * @copyright 2023 Sven Jostkleigrewe
+ *
  * @see https://developer.amazon.com/en-US/docs/alexa/custom-skills/request-and-response-json-reference.html#outputspeech-object
  */
 class AlexaResponseResponseOutputSpeech
@@ -26,39 +27,31 @@ class AlexaResponseResponseOutputSpeech
 
     /**
      * @var string $type
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("type")
      */
-    private $type;
+    private string $type;
 
     /**
      * @var string $text
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("text")
      */
-    private $text;
+    private string $text;
 
     /**
      * @var string $ssml
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("ssml")
      */
-    private $ssml;
+    private string $ssml;
 
     /**
      * A string that determines the queuing and playback of this output speech.
      *
      * @var string $playBehavior
-     *
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("playBehavior")
      * @see https://developer.amazon.com/en-US/docs/alexa/echo-button-skills/control-interruption-alexa-speech.html
      */
-    private $playBehavior;
+    private string $playBehavior;
 
-    /**
-     * AlexaResponse constructor.
-     */
     public function __construct()
     {
         $this->type = self::TYPE_TEXT;
@@ -66,75 +59,51 @@ class AlexaResponseResponseOutputSpeech
         $this->playBehavior = self::PLAY_BEHAVIOR_ENQUEUE;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     * @return AlexaResponseResponseOutputSpeech
-     */
     public function setType(string $type): AlexaResponseResponseOutputSpeech
     {
         $this->type = $type;
+
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getText(): string
     {
         return $this->text;
     }
 
-    /**
-     * @param string $text
-     * @return self
-     */
     public function setText(string $text): self
     {
         $this->text = $text;
+
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getSsml(): string
     {
         return $this->ssml;
     }
 
-    /**
-     * @param string $ssml
-     * @return self
-     */
     public function setSsml(string $ssml): self
     {
         $this->ssml = $ssml;
+
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getPlayBehavior(): string
+     public function getPlayBehavior(): string
     {
         return $this->playBehavior;
     }
 
-    /**
-     * @param string $playBehavior
-     * @return self
-     */
     public function setPlayBehavior(string $playBehavior): self
     {
         $this->playBehavior = $playBehavior;
+
         return $this;
     }
 }

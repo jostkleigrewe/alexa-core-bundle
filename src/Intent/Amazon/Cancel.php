@@ -3,9 +3,9 @@ declare(strict_types = 1);
 
 namespace Jostkleigrewe\AlexaCoreBundle\Intent\Amazon;
 
+use Jostkleigrewe\AlexaCoreBundle\Dto\Response\AlexaResponseResponseCard;
 use Jostkleigrewe\AlexaCoreBundle\Intent\AbstractFallbackIntent;
 use Jostkleigrewe\AlexaCoreBundle\Intent\AbstractIntent;
-use Jostkleigrewe\AlexaCoreBundle\Response\AlexaResponseResponseCard;
 
 /**
  * Class Cancel

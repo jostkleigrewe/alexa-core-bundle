@@ -1,23 +1,20 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Response;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Response;
 
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequestIntent;
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequestIntentSlot;
-use Jostkleigrewe\AlexaCoreBundle\Response\Directive\DirectiveInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use JMS\Serializer\Annotation;
+use Jostkleigrewe\AlexaCoreBundle\Response\Directive\DirectiveInterface;
+use Symfony\Component\Serializer\Annotation;
 
 /**
- * Class AlexaResponseResponse
+ * DTO AlexaResponseResponse
  *
- *
- * @package Jostkleigrewe\AlexaCoreBundle\Response
- * @author Sven Jostkleigrewe <sven@jostkleigrewe.com>
- * @copyright 2020 Sven Jostkleigrewe
- * @see https://developer.amazon.com/en-US/docs/alexa/custom-skills/request-and-response-json-reference.html#response-object
- */
+ * @package   Jostkleigrewe\AlexaCoreBundle
+ * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
+ * @copyright 2023 Sven Jostkleigrewe
+ * @see       https://developer.amazon.com/en-US/docs/alexa/custom-skills/request-and-response-json-reference.html#response-format
+  */
 class AlexaResponseResponse
 {
 

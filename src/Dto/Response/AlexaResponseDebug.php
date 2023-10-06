@@ -1,34 +1,29 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Response;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Response;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use JMS\Serializer\Annotation;
+use Symfony\Component\Serializer\Annotation;
 
 /**
- * Class AlexaResponseDebug
+ * DTO AlexaResponseDebug
  *
- * @package   Jostkleigrewe\AlexaCoreBundle\Response
+ * @package   Jostkleigrewe\AlexaCoreBundle
  * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
- * @copyright 2020 Sven Jostkleigrewe
+ * @copyright 2023 Sven Jostkleigrewe
+ * @see       https://developer.amazon.com/en-US/docs/alexa/custom-skills/request-and-response-json-reference.html#response-format
  */
 class AlexaResponseDebug
 {
     /**
-     * @var array $messages
-     *
+     * @var array<string, string> $messages
      * @Annotation\SerializedName("messages")
-     * @Annotation\Type("array<string, string>")
      */
-    private $messages;
+    private array $messages;
 
-    /**
-     * AlexaResponse constructor.
-     */
     public function __construct()
     {
-        $this->messages = array();
+        $this->messages = [];
     }
 
     /**

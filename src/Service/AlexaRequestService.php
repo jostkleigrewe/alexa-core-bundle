@@ -3,9 +3,8 @@ declare(strict_types = 1);
 
 namespace Jostkleigrewe\AlexaCoreBundle\Service;
 
-use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequestDto;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequest;
 use Jostkleigrewe\AlexaCoreBundle\Exception\AlexaCoreException;
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequest;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -34,7 +33,7 @@ class AlexaRequestService
      *
      * @throws AlexaCoreException
      */
-    public function getAlexaRequest(): AlexaRequestDto
+    public function getAlexaRequest(): AlexaRequest
     {
         if ($this->alexaRequest === null) {
             $this->alexaRequest = $this->createAlexaRequestBySymfonyRequest();
@@ -58,20 +57,20 @@ class AlexaRequestService
      * Deserialize json-string and return a populated alexa-request
      *
      * @param string $json
-     * @return AlexaRequestDto
+     * @return AlexaRequest
      * @throws AlexaCoreException
      */
-    public function createAlexaRequestByJsonString(string $json): AlexaRequestDto
+    public function createAlexaRequestByJsonString(string $json): AlexaRequest
     {
         if ($this->alexaRequest === null)
         {
             try {
                 $alexaRequest = $this->serializer->deserialize(
                     $json,
-                    AlexaRequestDto::class,
+                    AlexaRequest::class,
                     self::REQUEST_FORMAT
                 );
-                /** @var AlexaRequestDto $alexaRequest */
+                /** @var AlexaRequest $alexaRequest */
             }
             catch (\Throwable $e) {
                 throw new AlexaCoreException(
@@ -93,7 +92,7 @@ class AlexaRequestService
      *
      * @throws AlexaCoreException
      */
-    public function createAlexaRequestBySymfonyRequest(): AlexaRequestDto
+    public function createAlexaRequestBySymfonyRequest(): AlexaRequest
     {
         return $this->createAlexaRequestByJsonString(
             $this->getSymfonyRequest()->getContent()

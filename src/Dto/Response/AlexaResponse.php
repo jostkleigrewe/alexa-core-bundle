@@ -16,7 +16,7 @@ use Symfony\Component\Serializer\Normalizer;
  * @copyright 2023 Sven Jostkleigrewe
  * @see       https://developer.amazon.com/en-US/docs/alexa/custom-skills/request-and-response-json-reference.html#response-parameters
  */
-class AlexaResponseDto
+class AlexaResponse
 {
 
     const VERSION = '1.0';

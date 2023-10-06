@@ -3,11 +3,9 @@ declare(strict_types = 1);
 
 namespace Jostkleigrewe\AlexaCoreBundle\Service;
 
-use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequestDto;
-use Jostkleigrewe\AlexaCoreBundle\Dto\Response\AlexaResponseDto;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequest;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Response\AlexaResponse;
 use Jostkleigrewe\AlexaCoreBundle\Exception\AlexaCoreException;
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequest;
-use Jostkleigrewe\AlexaCoreBundle\Response\AlexaResponse;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -56,7 +54,7 @@ class AlexaResponseService
      * @return AlexaResponse
      * @throws AlexaCoreException
      */
-    public function createAlexaResponseBySymfonyRequest(): AlexaResponseDto
+    public function createAlexaResponseBySymfonyRequest(): AlexaResponse
     {
         $alexaRequest = $this->getAlexaRequestService()->getAlexaRequest();
 
@@ -67,9 +65,9 @@ class AlexaResponseService
      * @param AlexaRequest $alexaRequest
      * @return AlexaResponse
      */
-    public function createAlexaResponseByAlexaRequest(AlexaRequestDto $alexaRequestDto): AlexaResponseDto
+    public function createAlexaResponseByAlexaRequest(AlexaRequest $alexaRequestDto): AlexaResponse
     {
-        return new AlexaResponseDto();
+        return new AlexaResponse();
     }
 
     /**

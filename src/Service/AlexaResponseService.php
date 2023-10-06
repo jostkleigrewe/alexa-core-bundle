@@ -3,6 +3,8 @@ declare(strict_types = 1);
 
 namespace Jostkleigrewe\AlexaCoreBundle\Service;
 
+use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequestDto;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Response\AlexaResponseDto;
 use Jostkleigrewe\AlexaCoreBundle\Exception\AlexaCoreException;
 use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequest;
 use Jostkleigrewe\AlexaCoreBundle\Response\AlexaResponse;
@@ -12,27 +14,18 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 /**
  * Class AlexaResponseService
  *
- * @package   Jostkleigrewe\AlexaCoreBundle\Service
+ * @package   Jostkleigrewe\AlexaCoreBundle
  * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
- * @copyright 2020 Sven Jostkleigrewe
+ * @copyright 2023 Sven Jostkleigrewe
  */
 class AlexaResponseService
 {
 
-    /**
-     * @var SerializerInterface $serializer
-     */
-    private $serializer;
 
     /**
      * @var AlexaResponse $alexaResponse
      */
-    private $alexaResponse;
-
-    /**
-     * @var AlexaRequestService $alexaRequestService
-     */
-    private $alexaRequestService;
+    private ?AlexaResponse $alexaResponse;
 
     /**
      * AlexaResponseService constructor.
@@ -41,11 +34,9 @@ class AlexaResponseService
      * @param AlexaRequestService $alexaRequestService
      */
     public function __construct(
-        SerializerInterface $serializer,
-        AlexaRequestService $alexaRequestService
+        private readonly SerializerInterface $serializer,
+        private readonly AlexaRequestService $alexaRequestService
     ) {
-        $this->serializer = $serializer;
-        $this->alexaRequestService = $alexaRequestService;
     }
 
     /**
@@ -65,7 +56,7 @@ class AlexaResponseService
      * @return AlexaResponse
      * @throws AlexaCoreException
      */
-    public function createAlexaResponseBySymfonyRequest(): AlexaResponse
+    public function createAlexaResponseBySymfonyRequest(): AlexaResponseDto
     {
         $alexaRequest = $this->getAlexaRequestService()->getAlexaRequest();
 
@@ -76,9 +67,9 @@ class AlexaResponseService
      * @param AlexaRequest $alexaRequest
      * @return AlexaResponse
      */
-    public function createAlexaResponseByAlexaRequest(AlexaRequest $alexaRequest): AlexaResponse
+    public function createAlexaResponseByAlexaRequest(AlexaRequestDto $alexaRequestDto): AlexaResponseDto
     {
-        return new AlexaResponse();
+        return new AlexaResponseDto();
     }
 
     /**

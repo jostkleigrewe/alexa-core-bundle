@@ -10,7 +10,7 @@ use Symfony\Component\Serializer\Annotation;
 use Symfony\Component\Serializer\Normalizer;
 
 /**
- * Class AlexaRequest
+ * Dto AlexaRequest
  *
  * Root-object for the alexa-request
  *

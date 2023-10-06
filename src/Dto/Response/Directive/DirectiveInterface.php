@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Response\Directive;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Response\Directive;
 
 /**
  * Interface DialogInterface

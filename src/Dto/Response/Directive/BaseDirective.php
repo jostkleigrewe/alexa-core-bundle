@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Response\Directive;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Response\Directive;
 
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequestIntent;
-use JMS\Serializer\Annotation;
+use Symfony\Component\Serializer\Annotation;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequestRequestIntent;
 
 /**
  * Class BaseDirective

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Response\Directive;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Response\Directive;
 
 /**
  * Class ConfirmIntentDirective
@@ -13,7 +13,5 @@ namespace Jostkleigrewe\AlexaCoreBundle\Response\Directive;
  */
 class ConfirmIntentDirective extends BaseDirective
 {
-
     const TYPE = "Dialog.ConfirmIntent";
-
 }

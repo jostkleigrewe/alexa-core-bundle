@@ -1,10 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Response\Directive;
-
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequest;
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequestIntent;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Response\Directive;
 
 /**
  * Class ElicitSlotDialog
@@ -16,8 +13,5 @@ use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequestIntent;
  */
 class ElicitSlotDirective extends BaseDirective
 {
-
     const TYPE = "Dialog.ElicitSlot";
-
-
 }

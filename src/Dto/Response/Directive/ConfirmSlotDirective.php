@@ -1,9 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Response\Directive;
-
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequestIntent;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Response\Directive;
 
 /**
  * Class ConfirmSlotDirective
@@ -15,6 +13,5 @@ use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequestIntent;
  */
 class ConfirmSlotDirective extends BaseDirective
 {
-
     const TYPE = "Dialog.ConfirmSlot";
 }

@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Jostkleigrewe\AlexaCoreBundle\Dto\Response;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Jostkleigrewe\AlexaCoreBundle\Response\Directive\DirectiveInterface;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Response\Directive\DirectiveInterface;
 use Symfony\Component\Serializer\Annotation;
 
 /**
@@ -26,31 +26,26 @@ class AlexaResponseResponse
      * The object containing the speech to render to the user.
      *
      * @var AlexaResponseResponseOutputSpeech $outputSpeech
-     *
-     * @Annotation\Type("Jostkleigrewe\AlexaCoreBundle\Response\AlexaResponseResponseOutputSpeech")
      * @Annotation\SerializedName("outputSpeech")
      */
-    private $outputSpeech;
+    private AlexaResponseResponseOutputSpeech $outputSpeech;
 
     /**
      * The object containing a card to render to the Amazon Alexa App.
      *
      * @var AlexaResponseResponseCard $card
-     *
-     * @Annotation\Type("Jostkleigrewe\AlexaCoreBundle\Response\AlexaResponseResponseCard")
      * @Annotation\SerializedName("card")
      */
-    private $card;
+    private AlexaResponseResponseCard $card;
 
     /**
      * The object containing the outputSpeech to use if a re-prompt is necessary.
      *
      * @var AlexaResponseResponseReprompt $reprompt
      *
-     * @Annotation\Type("Jostkleigrewe\AlexaCoreBundle\Response\AlexaResponseResponseReprompt")
      * @Annotation\SerializedName("reprompt")
      */
-    private $reprompt;
+    private AlexaResponseResponseReprompt $reprompt;
 
     /**
      * A boolean value that indicates what should happen after Alexa speaks the response:
@@ -60,20 +55,17 @@ class AlexaResponseResponse
      *
      * @var bool $shouldEndSession
      *
-     * @Annotation\Type("bool")
      * @Annotation\SerializedName("shouldEndSession")
      */
-    private $shouldEndSession;
+    private bool $shouldEndSession;
 
     /**
      * An array of directives specifying device-level actions to take using a particular interface
      *
-     * @var ArrayCollection $directives
-     *
-     * @Annotation\Type("ArrayCollection<Jostkleigrewe\AlexaCoreBundle\Response\Directive\BaseDirective>")
+     * @var ArrayCollection<Jostkleigrewe\AlexaCoreBundle\Dto\Response\Directive\BaseDirective> $directives
      * @Annotation\SerializedName("directives")
      */
-    private $directives;
+    private ArrayCollection $directives;
 
     /**
      * AlexaResponseResponse constructor.

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Response\Directive\Slot;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Response\Directive\Slot;
 
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequestIntentSlot;
 use JMS\Serializer\Annotation;
+use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequestIntentSlot;
 
 /**
  * Class DialogSlot

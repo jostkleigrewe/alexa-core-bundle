@@ -63,15 +63,14 @@ class AlexaResponse
     /**
      * AlexaResponse constructor.
      */
-//    public function __construct()
-//    {
-//        $this->version = self::VERSION;
-//        $this->sessionAttributes = array();
-//        $this->response = new AlexaResponseResponse();
-//        $this->debug = new AlexaResponseDebug();
-//        $this->statusCode = 200;
-//    }
-//
+    public function __construct()
+    {
+        $this->version = self::VERSION;
+        $this->sessionAttributes = [];
+        $this->response = new AlexaResponseResponse();
+        $this->debug = new AlexaResponseDebug();
+        $this->statusCode = 200;
+    }
 
     public function getVersion(): string
     {

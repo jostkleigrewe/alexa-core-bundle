@@ -18,16 +18,14 @@ class AlexaRequestContext
     /**
      * @var AlexaRequestContextSystem $system
      * @Annotation\SerializedName("System")
-     * @Annotation\Type("Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestContextSystem")
      */
-    private $system;
+    private AlexaRequestContextSystem $system;
 
     /**
      * @var AlexaRequestContextViewport $viewport
      * @Annotation\SerializedName("Viewport")
-     * @Annotation\Type("Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestContextViewport")
      */
-    private $viewport;
+    private AlexaRequestContextViewport $viewport;
 
     /**
      * @return AlexaRequestContextSystem

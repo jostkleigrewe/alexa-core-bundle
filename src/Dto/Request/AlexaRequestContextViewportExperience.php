@@ -23,30 +23,26 @@ class AlexaRequestContextViewportExperience
     /**
      * @var int $arcMinuteWidth
      * @Annotation\SerializedName("arcMinuteWidth")
-     * @Annotation\Type("int")
      */
-    private $arcMinuteWidth;
+    private int $arcMinuteWidth;
 
     /**
      * @var int $arcMinuteHeight
      * @Annotation\SerializedName("arcMinuteHeight")
-     * @Annotation\Type("int")
      */
-    private $arcMinuteHeight;
+    private int $arcMinuteHeight;
 
     /**
      * @var bool $canRotate
      * @Annotation\SerializedName("canRotate")
-     * @Annotation\Type("bool")
      */
-    private $canRotate;
+    private bool $canRotate;
 
     /**
      * @var bool $canResize
      * @Annotation\SerializedName("canResize")
-     * @Annotation\Type("bool")
      */
-    private $canResize;
+    private bool $canResize;
 
     /**
      * @return int

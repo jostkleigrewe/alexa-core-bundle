@@ -18,9 +18,8 @@ class AlexaRequestContextSystemApplication
     /**
      * @var string $applicationId
      * @Annotation\SerializedName("applicationId")
-     * @Annotation\Type("string")
      */
-    private $applicationId;
+    private string $applicationId;
 
     /**
      * @return string

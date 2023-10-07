@@ -18,18 +18,15 @@ class AlexaRequestContextSystemUser
      * @var string $userId
      *
      * @Annotation\SerializedName("userId")
-     * @Annotation\Type("string")
      */
-    private $userId;
+    private string $userId;
 
     /**
      * @var string $accessToken
      *
      * @Annotation\SerializedName("accessToken")
-     * @Annotation\Type("string")
      */
-    private $accessToken;
-
+    private string $accessToken;
 
     /**
      * @return string

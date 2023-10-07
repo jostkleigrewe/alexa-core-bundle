@@ -19,23 +19,20 @@ class AlexaRequestContextViewport
     /**
      * @var string $shape
      * @Annotation\SerializedName("shape")
-     * @Annotation\Type("string")
      */
-    private $shape;
+    private string $shape;
 
     /**
      * @var int $pixelWidth
      * @Annotation\SerializedName("pixelWidth")
-     * @Annotation\Type("int")
      */
-    private $pixelWidth;
+    private int $pixelWidth;
 
     /**
      * @var int $pixelHeight
      * @Annotation\SerializedName("pixelHeight")
-     * @Annotation\Type("int")
      */
-    private $pixelHeight;
+    private int $pixelHeight;
 
     /**
      * @var int $dpi

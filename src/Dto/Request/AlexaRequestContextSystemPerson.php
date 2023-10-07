@@ -19,18 +19,16 @@ class AlexaRequestContextSystemPerson
      *
      * @var string $personId
      * @Annotation\SerializedName("personId")
-     * @Annotation\Type("string")
      */
-    private $personId;
+    private string $personId;
 
     /**
      * A token identifying the person in another system.
      *
      * @var string $accessToken
      * @Annotation\SerializedName("accessToken")
-     * @Annotation\Type("string")
      */
-    private $accessToken;
+    private string $accessToken;
 
     /**
      * @return string

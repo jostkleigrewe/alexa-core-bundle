@@ -17,9 +17,8 @@ class AlexaRequestContextSystemDevice
     /**
      * @var string $deviceId
      * @Annotation\SerializedName("deviceId")
-     * @Annotation\Type("string")
      */
-    private $deviceId;
+    private string $deviceId;
 
     /**
      * @var array $supportedInterfaces

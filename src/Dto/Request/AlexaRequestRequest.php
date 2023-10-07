@@ -87,8 +87,6 @@ class AlexaRequestRequest
      * Enumeration indicating the status of the multi-turn dialog.
      *
      * @var string $dialogState
-     *
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("dialogState")
      */
     private string $dialogState;

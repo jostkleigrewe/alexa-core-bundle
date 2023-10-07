@@ -20,57 +20,49 @@ class AlexaRequestContextSystem
      * An object containing an application ID. This is used to verify that the request was intended for your service.
      *
      * @var AlexaRequestContextSystemApplication $application
-     *
      * @Annotation\SerializedName("application")
-     * @Annotation\Type("Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestContextSystemApplication")
      */
-    private $application;
+    private AlexaRequestContextSystemApplication $application;
 
     /**
      * An object that describes the Amazon account for which the skill is enabled.
      *
      * @var AlexaRequestContextSystemUser $user
      * @Annotation\SerializedName("user")
-     * @Annotation\Type("Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestContextSystemUser")
      */
-    private $user;
+    private AlexaRequestContextSystemUser $user;
 
     /**
      * An object providing information about the device used to send the request.
      *
      * @var AlexaRequestContextSystemDevice $device
      * @Annotation\SerializedName("device")
-     * @Annotation\Type("Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestContextSystemDevice")
      */
-    private $device;
+    private AlexaRequestContextSystemDevice $device;
 
     /**
      * An object that describes the person who is making the request to Alexa.
      *
      * @var AlexaRequestContextSystemPerson $person
      * @Annotation\SerializedName("person")
-     * @Annotation\Type("Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestContextSystemPerson")
      */
-    private $person;
+    private AlexaRequestContextSystemPerson $person;
 
     /**
      * A string that references the correct base URI to refer to by region
      *
      * @var string $apiEndpoint
      * @Annotation\SerializedName("apiEndpoint")
-     * @Annotation\Type("string")
      */
-    private $apiEndpoint;
+    private string $apiEndpoint;
 
     /**
      * A string containing a token that can be used to access Alexa-specific APIs
      *
      * @var string $apiAccessToken
-     *
-     * @Annotation\SerializedName("apiAccessToken")
      * @Annotation\Type("string")
      */
-    private $apiAccessToken;
+    private string $apiAccessToken;
 
     /**
      * @return AlexaRequestContextSystemApplication

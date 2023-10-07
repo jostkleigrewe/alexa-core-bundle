@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Jostkleigrewe\AlexaCoreBundle\Dto\Response\Directive\Slot;
 
 use JMS\Serializer\Annotation;
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequestIntentSlot;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequestRequestIntentSlot;
 
 /**
  * Class DialogSlot

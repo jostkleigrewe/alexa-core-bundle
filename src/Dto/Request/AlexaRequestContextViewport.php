@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Request;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Request;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use JMS\Serializer\Annotation;
+use Symfony\Component\Serializer\Annotation;
 
 /**
  * Class AlexaRequestContextViewport

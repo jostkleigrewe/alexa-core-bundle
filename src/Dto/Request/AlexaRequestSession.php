@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Request;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Request;
 
-use JMS\Serializer\Annotation;
+use Symfony\Component\Serializer\Annotation;
 
 /**
  * Class AlexaRequestSession
@@ -16,31 +16,27 @@ class AlexaRequestSession
 
     /**
      * @var bool $new
-     * @Annotation\Type("bool")
      * @Annotation\SerializedName("new")
      */
-    private $new;
+    private bool $new;
 
     /**
      * @var string $sessionId
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("sessionId")
      */
-    private $sessionId;
+    private string $sessionId;
 
     /**
      * @var AlexaRequestSessionApplication $application
-     * @Annotation\Type("Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestSessionApplication")
      * @Annotation\SerializedName("application")
      */
-    private $application;
+    private AlexaRequestSessionApplication $application;
 
     /**
      * @var AlexaRequestSessionUser $user
-     * @Annotation\Type("Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestSessionUser")
      * @Annotation\SerializedName("user")
      */
-    private $user;
+    private AlexaRequestSessionUser $user;
 
     /**
      * @return bool

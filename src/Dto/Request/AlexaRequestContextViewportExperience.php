@@ -1,16 +1,20 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Request;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Request;
 
-use JMS\Serializer\Annotation;
+use Symfony\Component\Serializer\Annotation;
 
 /**
  * Class AlexaRequestContextViewportExperience
  *
+ * Manages the viewport experience settings in Alexa Request Context.
+ *
  * @package   Jostkleigrewe\AlexaCoreBundle\Request
  * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
- * @copyright 2021 Sven Jostkleigrewe
+ * @copyright 2023 Sven Jostkleigrewe
+ * @see       AlexaRequestContextViewport::getExperiences()
+ * @link      https://developer.amazon.com/docs/alexa-skills-kit
  */
 class AlexaRequestContextViewportExperience
 {

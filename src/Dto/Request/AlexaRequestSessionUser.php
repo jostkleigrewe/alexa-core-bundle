@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Request;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Request;
 
-use JMS\Serializer\Annotation;
+use Symfony\Component\Serializer\Annotation;
 
 /**
  * Class AlexaRequestSessionUser
@@ -17,10 +17,9 @@ class AlexaRequestSessionUser
 
     /**
      * @var string $userId
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("userId")
      */
-    private $userId;
+    private string $userId;
 
     /**
      * @return string

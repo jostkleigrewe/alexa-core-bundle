@@ -5,7 +5,6 @@ namespace Jostkleigrewe\AlexaCoreBundle\Dto\Request;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation;
-use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequestRequestIntentSlot;
 
 /**
  * Class AlexaRequestRequestIntent
@@ -24,29 +23,24 @@ class AlexaRequestRequestIntent
      * A string representing the name of the intent.
      *
      * @var string $name
-     *
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("name")
      */
-    private $name;
+    private string $name;
 
     /**
      * An enumeration indicating whether the user has explicitly confirmed or denied the entire intent.
      *
      * @var string $confirmationStatus
-     *
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("confirmationStatus")
      */
-    private $confirmationStatus;
+    private string $confirmationStatus;
 
     /**
-     * @var ArrayCollection $slots
+     * @var ArrayCollection<string,AlexaRequestRequestIntentSlot> $slots
      *
-     * @Annotation\Type("ArrayCollection<string,Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequestIntentSlot>")
      * @Annotation\SerializedName("slots")
      */
-    private $slots;
+    private ArrayCollection $slots;
 
     /**
      * AlexaRequestRequestIntent constructor.
@@ -93,7 +87,7 @@ class AlexaRequestRequestIntent
     }
 
     /**
-     * @return ArrayCollection|AlexaRequestRequestIntentSlot[]
+     * @return ArrayCollection<string,AlexaRequestRequestIntentSlot>
      */
     public function getSlots(): ArrayCollection
     {

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Request;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Request;
 
-use JMS\Serializer\Annotation;
+use Symfony\Component\Serializer\Annotation;
 
 /**
  * Class AlexaRequestRequestIntentSlot
@@ -23,38 +23,31 @@ class AlexaRequestRequestIntentSlot
      * A string that represents the name of the slot.
      *
      * @var string $name
-     *
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("name")
      */
-    private $name;
+    private string $name;
 
     /**
      * A string that represents the value the user spoke for the slot.
      *
      * @var string|null $value
-     *
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("value")
      */
-    private $value;
+    private string $value;
 
     /**
      * An enumeration indicating whether the user has explicitly confirmed or denied the value of this slot.
      *
      * @var string $confirmationStatus
-     *
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("confirmationStatus")
      */
-    private $confirmationStatus;
+    private string $confirmationStatus;
 
     /**
      * @var string $source
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("source")
      */
-    private $source;
+    private string $source;
 
     /**
      * @return string

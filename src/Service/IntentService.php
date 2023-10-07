@@ -3,11 +3,11 @@ declare(strict_types = 1);
 
 namespace Jostkleigrewe\AlexaCoreBundle\Service;
 
+use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequestRequest;
 use Jostkleigrewe\AlexaCoreBundle\Exception\AlexaCoreException;
 use Jostkleigrewe\AlexaCoreBundle\Intent\IntentCollection;
 use Jostkleigrewe\AlexaCoreBundle\Intent\IntentInterface;
 use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequest;
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequest;
 use Jostkleigrewe\AlexaCoreBundle\Response\AlexaResponse;
 
 /**

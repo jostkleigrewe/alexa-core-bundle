@@ -3,16 +3,12 @@ declare(strict_types = 1);
 
 namespace Jostkleigrewe\AlexaCoreBundle\Dto\Request;
 
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestContext;
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequest;
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestSession;
 use Symfony\Component\Serializer\Annotation;
-use Symfony\Component\Serializer\Normalizer;
 
 /**
  * Dto AlexaRequest
  *
- * Root-object for the alexa-request
+ * DTO for JSON-Request of the Alexa Skill
  *
  * @package   Jostkleigrewe\AlexaCoreBundle
  * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>

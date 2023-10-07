@@ -1,9 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jostkleigrewe\AlexaCoreBundle\Request;
+namespace Jostkleigrewe\AlexaCoreBundle\Dto\Request;
 
-use JMS\Serializer\Annotation;
+use Symfony\Component\Serializer\Annotation;
+use DateTimeImmutable;
 
 /**
  * Class AlexaRequestRequest
@@ -42,57 +43,45 @@ class AlexaRequestRequest
      * Describes the request type with the value as: "LaunchRequest"
      *
      * @var string $type
-     *
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("type")
      */
-    private $type;
+    private string $type;
 
     /**
      * Represents a unique identifier for the specific request.
      *
      * @var string $requestId
-     *
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("requestId")
      */
-    private $requestId;
+    private string $requestId;
 
     /**
      * Provides the date and time when Alexa sent the request as an ISO 8601 formatted string.
      *
-     * @var \DateTime $timestamp
-     *
-     * @Annotation\Type("DateTime")
+     * @var DateTimeImmutable $timestamp
      * @Annotation\SerializedName("timestamp")
      */
-    private $timestamp;
+    private DateTimeImmutable $timestamp;
 
     /**
      * A string indicating the user's locale. For example: en-US.
      *
      * @var string $locale
-     *
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("locale")
      */
-    private $locale;
+    private string $locale;
 
     /**
      * @var bool $shouldLinkResultBeReturned
-     *
-     * @Annotation\Type("bool")
      * @Annotation\SerializedName("shouldLinkResultBeReturned")
      */
-    private $shouldLinkResultBeReturned;
+    private bool $shouldLinkResultBeReturned;
 
     /**
      * @var AlexaRequestRequestIntent $intent
-     *
-     * @Annotation\Type("Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequestIntent")
      * @Annotation\SerializedName("intent")
      */
-    private $intent;
+    private AlexaRequestRequestIntent $intent;
 
     /**
      * Enumeration indicating the status of the multi-turn dialog.
@@ -102,7 +91,7 @@ class AlexaRequestRequest
      * @Annotation\Type("string")
      * @Annotation\SerializedName("dialogState")
      */
-    private $dialogState;
+    private string $dialogState;
 
     /**
      * @return string

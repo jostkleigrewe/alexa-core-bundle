@@ -60,7 +60,7 @@ class AlexaRequestContextSystem
      * A string containing a token that can be used to access Alexa-specific APIs
      *
      * @var string $apiAccessToken
-     * @Annotation\Type("string")
+     * @Annotation\SerializedName("apiAccessToken")
      */
     private string $apiAccessToken;
 

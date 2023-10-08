@@ -5,213 +5,142 @@ namespace Jostkleigrewe\AlexaCoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\PersistentCollection;
+use Jostkleigrewe\AlexaCoreBundle\Repository\AlexaUserRepository;
 
-/**
- * @ORM\Entity(repositoryClass="Jostkleigrewe\AlexaCoreBundle\Repository\AlexaUserRepository")
- * @ORM\Table(name="alexa_user")
- */
+#[ORM\Entity(repositoryClass: AlexaUserRepository::class)]
+#[ORM\Table(name: "alexa_user")]
 class AlexaUser
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @var string $alexaId
-     * @ORM\Column(type="string", length=255, unique=true, nullable=false, options={"collate"="utf8_unicode_ci", "charset"="utf8"})
-     */
-    private $alexaId;
+    #[ORM\Column(length: 255)]
+    private ?string $alexaId = null;
 
-    /**
-     * @var string $name
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $name;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $name = null;
 
-    /**
-     * @var string $password
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $password;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $password = null;
 
-    /**
-     * @var string $role
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $role;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $role = null;
 
-    /**
-     * @var PersistentCollection $alexaDevices
-     * @ORM\ManyToMany(targetEntity="Jostkleigrewe\AlexaCoreBundle\Entity\AlexaDevice", mappedBy="alexaUsers")
-     */
-    private $alexaDevices;
+    #[ORM\ManyToMany(targetEntity: AlexaDevice::class, mappedBy: 'alexaUsers')]
+    private Collection $alexaDevices;
 
-    /**
-     * @var ArrayCollection|AlexaUserValue[] $userValues
-     * @ORM\OneToMany(targetEntity="Jostkleigrewe\AlexaCoreBundle\Entity\AlexaUserValue", mappedBy="alexaUser")
-     */
-    private $userValues;
+    #[ORM\OneToMany(targetEntity: AlexaUserValue::class, mappedBy: 'alexaUser')]
+    private Collection $userValues;
 
-    /**
-     * AlexaDevice constructor.
-     */
     public function __construct() {
         $this->alexaDevices = new ArrayCollection();
         $this->userValues = new ArrayCollection();
     }
 
-    /**
-     * @return int|null
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAlexaId(): ?string
     {
         return $this->alexaId;
     }
 
-    /**
-     * @param string $alexaId
-     * @return AlexaUser
-     */
-    public function setAlexaId(string $alexaId): self
+    public function setAlexaId(string $alexaId): static
     {
         $this->alexaId = $alexaId;
-
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     * @return AlexaUser
-     */
-    public function setName(?string $name): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    /**
-     * @param string|null $password
-     * @return AlexaUser
-     */
-    public function setPassword(?string $password): self
+    public function setPassword(?string $password): static
     {
         $this->password = $password;
-
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getRole(): ?string
     {
         return $this->role;
     }
 
-    /**
-     * @param string $role
-     * @return self
-     */
-    public function setRole(string $role): self
+    public function setRole(?string $role): static
     {
         $this->role = $role;
         return $this;
     }
 
     /**
-     * @return PersistentCollection
+     * @return Collection<int, AlexaDevice>
      */
-    public function getAlexaDevices(): PersistentCollection
+    public function getAlexaDevices(): Collection
     {
         return $this->alexaDevices;
     }
 
-    /**
-     * @param AlexaDevice $alexaDevice
-     * @return $this
-     */
-    public function addAlexaDevice(AlexaDevice $alexaDevice): self
+    public function addAlexaDevice(AlexaDevice $alexaDevice): static
     {
         if (!$this->alexaDevices->contains($alexaDevice)) {
             $this->alexaDevices->add($alexaDevice);
+            $alexaDevice->addAlexaUser($this);
         }
 
         return $this;
     }
 
-    /**
-     * @param AlexaDevice $alexaDevice
-     * @return $this
-     */
-    public function removeAlexaDevice(AlexaDevice $alexaDevice): self
+    public function removeAlexaDevice(AlexaDevice $alexaDevice): static
     {
-        if ($this->alexaDevices->contains($alexaDevice)) {
-            $this->alexaDevices->removeElement($alexaDevice);
-        }
+        $this->alexaDevices->removeElement($alexaDevice);
+
         return $this;
     }
 
     /**
-     * @param PersistentCollection $alexaDevices
-     * @return AlexaUser
+     * @return Collection<int, AlexaUserValue>
      */
-    public function setAlexaDevices(PersistentCollection $alexaDevices): self
-    {
-        $this->alexaDevices = $alexaDevices;
-        return $this;
-    }
-
-    /**
-     * @return AlexaUserValue[]|ArrayCollection
-     */
-    public function getUserValues()
+    public function getUserValues(): Collection
     {
         return $this->userValues;
     }
 
-    /**
-     * @param AlexaUserValue[]|ArrayCollection $userValues
-     * @return AlexaUser
-     */
-    public function setUserValues($userValues): self
+    public function addUserValue(AlexaUserValue $alexaUserValue): static
     {
-        $this->userValues = $userValues;
+        if (!$this->userValues->contains($alexaUserValue)) {
+            $this->userValues->add($alexaUserValue);
+//            $alexaUserValue->setAlexaUser($this);
+        }
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function removeUserValue(AlexaUserValue $alexaUserValue): static
+    {
+        $this->userValues->removeElement($alexaUserValue);
+
+        return $this;
+    }
+
+    public function __toString(): string
     {
         return __METHOD__;
     }

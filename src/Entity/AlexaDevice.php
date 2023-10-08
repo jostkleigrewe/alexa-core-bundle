@@ -4,84 +4,55 @@ declare(strict_types = 1);
 namespace Jostkleigrewe\AlexaCoreBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Jostkleigrewe\AlexaCoreBundle\Repository\AlexaDeviceRepository;
 
-/**
- * @ORM\Entity(repositoryClass="Jostkleigrewe\AlexaCoreBundle\Repository\AlexaDeviceRepository")
- * @ORM\Table(name="alexa_device")
- */
+#[ORM\Entity(repositoryClass: AlexaDeviceRepository::class)]
+#[ORM\Table(name: "alexa_device")]
 class AlexaDevice
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private int $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, unique=true, nullable=false, options={"collate"="utf8_unicode_ci", "charset"="utf8"})
-     */
-    private string $deviceId;
+    #[ORM\Column(length: 255)]
+    private ?string $deviceId = null;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private string $name;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $name = null;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Jostkleigrewe\AlexaCoreBundle\Entity\AlexaUser", inversedBy="alexaDevices")
-     * @ORM\JoinTable(name="alexa_users_devices")
-     */
-    private ArrayCollection $alexaUsers;
+    #[ORM\ManyToMany(targetEntity: AlexaUser::class, inversedBy: 'alexaDevices')]
+    private Collection $alexaUsers;
 
-    /**
-     * AlexaDevice constructor.
-     */
     public function __construct() {
         $this->alexaUsers = new ArrayCollection();
     }
 
-    /**
-     * @return int|null
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDeviceId(): ?string
     {
         return $this->deviceId;
     }
 
-    /**
-     * @param string $deviceId
-     * @return AlexaDevice
-     */
-    public function setDeviceId(string $deviceId): self
+    public function setDeviceId(string $deviceId): static
     {
         $this->deviceId = $deviceId;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     * @return AlexaUser
-     */
-    public function setName(?string $name): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
@@ -89,9 +60,9 @@ class AlexaDevice
     }
 
     /**
-     * @return mixed
+     * @return Collection<int, AlexaUser>
      */
-    public function getAlexaUsers()
+    public function getAlexaUsers(): Collection
     {
         return $this->alexaUsers;
     }
@@ -100,7 +71,7 @@ class AlexaDevice
      * @param AlexaUser $alexaUser
      * @return $this
      */
-    public function addAlexaUser(AlexaUser $alexaUser)
+    public function addAlexaUser(AlexaUser $alexaUser): static
     {
         if (!$this->alexaUsers->contains($alexaUser)) {
             $this->alexaUsers->add($alexaUser);
@@ -109,25 +80,12 @@ class AlexaDevice
         return $this;
     }
 
-    /**
-     * @param AlexaUser $alexaUser
-     * @return $this
-     */
-    public function removeAlexaUser(AlexaUser $alexaUser)
+    public function removeAlexaUser(AlexaUser $alexaUser): static
     {
-        if ($this->alexaUsers->contains($alexaUser)) {
-            $this->alexaUsers->removeElement($alexaUser);
+        if ($this->alexaUsers->removeElement($alexaUser)) {
+            $alexaUser->removeAlexaDevice($this);
         }
-        return $this;
-    }
 
-    /**
-     * @param mixed $alexaUsers
-     * @return AlexaDevice
-     */
-    public function setAlexaUsers($alexaUsers)
-    {
-        $this->alexaUsers = $alexaUsers;
         return $this;
     }
 

@@ -20,11 +20,11 @@
     },
     "require": {
         "php": "^8.2",
+        "doctrine/doctrine-bundle": "2.11.x-dev",
         "doctrine/orm": "^2.15",
         "symfony/config": "^6.3",
         "symfony/framework-bundle": "^6.3",
-        "symfony/serializer": "^6.3",
-        "symfony/workflow": "^6.3"
+        "symfony/serializer": "^6.3"
     },
     "conflict": {
     },

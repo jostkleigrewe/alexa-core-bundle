@@ -24,7 +24,7 @@ class AlexaSessionService
     /**
      * @var null|AlexaSession $alexaSession
      */
-    private ?AlexaSession $alexaSession;
+    private ?AlexaSession $alexaSession = null;
 
     public function __construct(
         private readonly EntityManagerInterface $entityManager,

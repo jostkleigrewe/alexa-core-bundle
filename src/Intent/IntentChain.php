@@ -15,22 +15,24 @@ class IntentChain
     /**
      * @var array $intents
      */
-    private $intents;
+    private array $intents;
 
     /**
      * IntentChain constructor.
      */
     public function __construct()
     {
-        $this->intents = array();
+        $this->intents = [];
     }
 
     /**
      * @param IntentInterface $intent
      */
-    public function addIntent(IntentInterface $intent)
+    public function addIntent(IntentInterface $intent): static
     {
         $this->intents[] = $intent;
+
+        return $this;
     }
 
     /**

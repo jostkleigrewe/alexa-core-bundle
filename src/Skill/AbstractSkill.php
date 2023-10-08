@@ -3,8 +3,8 @@ declare(strict_types = 1);
 
 namespace Jostkleigrewe\AlexaCoreBundle\Skill;
 
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequest;
-use Jostkleigrewe\AlexaCoreBundle\Response\AlexaResponse;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequest;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Response\AlexaResponse;
 
 /**
  * Class AbstractSkill

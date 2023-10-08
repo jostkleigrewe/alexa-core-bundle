@@ -14,19 +14,13 @@ use Jostkleigrewe\AlexaCoreBundle\Repository\AlexaRequestResponseLogRepository;
  */
 class AlexaLogService
 {
-
-    /**
-     * @var AlexaRequestResponseLogRepository $logRepository
-     */
-    private $logRepository;
-
     /**
      * AlexaUserService constructor.
      * @param AlexaRequestResponseLogRepository $logRepository
      */
-    public function __construct(AlexaRequestResponseLogRepository $logRepository)
+    public function __construct(
+        private readonly AlexaRequestResponseLogRepository $logRepository)
     {
-        $this->logRepository = $logRepository;
     }
 
     /**
@@ -36,8 +30,5 @@ class AlexaLogService
     {
         return $this->logRepository;
     }
-
-
-
 
 }

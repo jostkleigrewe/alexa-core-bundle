@@ -3,12 +3,12 @@ declare(strict_types = 1);
 
 namespace Jostkleigrewe\AlexaCoreBundle\Service;
 
+use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequest;
 use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequestRequest;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Response\AlexaResponse;
 use Jostkleigrewe\AlexaCoreBundle\Exception\AlexaCoreException;
 use Jostkleigrewe\AlexaCoreBundle\Intent\IntentCollection;
 use Jostkleigrewe\AlexaCoreBundle\Intent\IntentInterface;
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequest;
-use Jostkleigrewe\AlexaCoreBundle\Response\AlexaResponse;
 
 /**
  * Class IntentService
@@ -23,19 +23,9 @@ class IntentService
     const SERVICE_TAG = 'alexa_core.intent';
 
     /**
-     * @var IntentCollection $intentCollection
+     * @var null|IntentInterface $intent
      */
-    private $intentCollection;
-
-    /**
-     * @var IntentInterface $intent
-     */
-    private $intent;
-
-    /**
-     * @var AlexaRequestService $alexaRequestService
-     */
-    private $alexaRequestService;
+    private ?IntentInterface $intent = null;
 
     /**
      * IntentService constructor.
@@ -44,12 +34,10 @@ class IntentService
      * @param AlexaRequestService $alexaRequestService
      */
     public function __construct(
-        IntentCollection $intentCollection,
-        AlexaRequestService $alexaRequestService
+        private readonly IntentCollection $intentCollection,
+        private readonly AlexaRequestService $alexaRequestService
     )
     {
-        $this->intentCollection = $intentCollection;
-        $this->alexaRequestService = $alexaRequestService;
     }
 
     /**

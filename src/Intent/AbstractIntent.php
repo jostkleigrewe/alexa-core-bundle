@@ -5,8 +5,8 @@ namespace Jostkleigrewe\AlexaCoreBundle\Intent;
 
 use Jostkleigrewe\AlexaCoreBundle\IntentSlot\RequiredSlot;
 use Jostkleigrewe\AlexaCoreBundle\Manager\AlexaCoreManager;
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequest;
-use Jostkleigrewe\AlexaCoreBundle\Response\AlexaResponse;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequest;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Response\AlexaResponse;
 use Jostkleigrewe\AlexaCoreBundle\Workflow\Service\AbstractWorkflowService;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Workflow\Registry;

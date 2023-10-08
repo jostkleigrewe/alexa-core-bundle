@@ -10,7 +10,7 @@ use Jostkleigrewe\AlexaCoreBundle\Manager\AlexaCoreManager;
 use Jostkleigrewe\AlexaCoreBundle\Repository\AlexaDeviceRepository;
 use Jostkleigrewe\AlexaCoreBundle\Repository\AlexaSessionRepository;
 use Jostkleigrewe\AlexaCoreBundle\Repository\AlexaSessionValueRepository;
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequest;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequest;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -23,24 +23,9 @@ class AlexaDeviceService
 {
 
     /**
-     * @var AlexaDeviceRepository $alexaDeviceRepository
+     * @var null|AlexaDevice $alexaDevice
      */
-    private $alexaDeviceRepository;
-
-    /**
-     * @var AlexaDevice $alexaDevice
-     */
-    private $alexaDevice;
-
-    /**
-     * @var AlexaRequestService $alexaRequestService
-     */
-    private $alexaRequestService;
-
-    /**
-     * @var EntityManagerInterface $entityManager
-     */
-    private $entityManager;
+    private ?AlexaDevice $alexaDevice = null;
 
     /**
      * AlexaDeviceService constructor.
@@ -50,14 +35,11 @@ class AlexaDeviceService
      * @param EntityManagerInterface $entityManager
      */
     public function __construct(
-        AlexaRequestService $alexaRequestService,
-        AlexaDeviceRepository $alexaDeviceRepository,
-        EntityManagerInterface $entityManager
+        private readonly AlexaRequestService $alexaRequestService,
+        private readonly AlexaDeviceRepository $alexaDeviceRepository,
+        private readonly EntityManagerInterface $entityManager
     )
     {
-        $this->alexaRequestService = $alexaRequestService;
-        $this->alexaDeviceRepository = $alexaDeviceRepository;
-        $this->entityManager = $entityManager;
     }
 
     /**

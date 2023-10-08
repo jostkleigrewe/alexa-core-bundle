@@ -16,7 +16,7 @@ class IntentCollection
     /**
      * @var iterable $handlers
      */
-    private $handlers;
+    private iterable $handlers;
 
     /**
      * IntentCollection constructor.

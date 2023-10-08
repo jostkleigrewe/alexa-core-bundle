@@ -33,7 +33,8 @@ class AlexaRequestContextSystem
     private AlexaRequestContextSystemUser $user;
 
     /**
-     * An object providing information about the device used to send the request.
+     * An object providing information about the device used to
+     * send the request.
      *
      * @var AlexaRequestContextSystemDevice $device
      * @Annotation\SerializedName("device")

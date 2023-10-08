@@ -50,22 +50,11 @@ class AlexaRequest
      */
     private AlexaRequestRequest $request;
 
-    /**
-     * @param string $version
-     * @param AlexaRequestSession $session
-     * @param AlexaRequestContext $context
-     * @param AlexaRequestRequest $request
-     */
-    public function __construct(
-        string $version,
-        AlexaRequestSession $session,
-        AlexaRequestContext $context,
-        AlexaRequestRequest $request)
+    public function __construct()
     {
-        $this->version = $version;
-        $this->session = $session;
-        $this->context = $context;
-        $this->request = $request;
+        $this->session = new AlexaRequestSession();
+        $this->context = new AlexaRequestContext();
+        $this->request = new AlexaRequestRequest();
     }
 
     public function getVersion(): string

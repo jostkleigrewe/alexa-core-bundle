@@ -8,7 +8,7 @@ use Jostkleigrewe\AlexaCoreBundle\Exception\AlexaCoreException;
 use Jostkleigrewe\AlexaCoreBundle\Manager\AlexaCoreManager;
 use Jostkleigrewe\AlexaCoreBundle\Repository\AlexaSessionRepository;
 use Jostkleigrewe\AlexaCoreBundle\Repository\AlexaSessionValueRepository;
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequest;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequest;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -21,67 +21,19 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AlexaSessionService
 {
-
     /**
-     * @var AlexaSessionRepository $alexaSessionRepository
+     * @var null|AlexaSession $alexaSession
      */
-    private $alexaSessionRepository;
+    private ?AlexaSession $alexaSession;
 
-    /**
-     * @var AlexaSessionValueRepository $alexaSessionValueRepository
-     */
-    private $alexaSessionValueRepository;
-
-    /**
-     * @var AlexaSession $alexaSession
-     */
-    private $alexaSession;
-
-    /**
-     * @var AlexaRequestService $alexaRequestService
-     */
-    private $alexaRequestService;
-
-    /**
-     * @var AlexaDeviceService $alexaDeviceService
-     */
-    private $alexaDeviceService;
-
-    /**
-     * @var AlexaUserService $alexaUserService
-     */
-    private $alexaUserService;
-
-    /**
-     * @var EntityManagerInterface $entityManager
-     */
-    private $entityManager;
-
-    /**
-     * AlexaSessionService constructor.
-     *
-     * @param EntityManagerInterface $entityManager
-     * @param AlexaRequestService $alexaRequestService
-     * @param AlexaDeviceService $alexaDeviceService
-     * @param AlexaUserService $alexaUserService
-     * @param AlexaSessionRepository $alexaSessionRepository
-     * @param AlexaSessionValueRepository $alexaSessionValueRepository
-     */
     public function __construct(
-        EntityManagerInterface $entityManager,
-        AlexaRequestService $alexaRequestService,
-        AlexaDeviceService $alexaDeviceService,
-        AlexaUserService $alexaUserService,
-        AlexaSessionRepository $alexaSessionRepository,
-        AlexaSessionValueRepository $alexaSessionValueRepository
-    )
-    {
-        $this->alexaRequestService = $alexaRequestService;
-        $this->alexaDeviceService = $alexaDeviceService;
-        $this->alexaUserService = $alexaUserService;
-        $this->alexaSessionRepository = $alexaSessionRepository;
-        $this->alexaSessionValueRepository = $alexaSessionValueRepository;
-        $this->entityManager = $entityManager;
+        private readonly EntityManagerInterface $entityManager,
+        private readonly AlexaRequestService $alexaRequestService,
+        private readonly AlexaDeviceService $alexaDeviceService,
+        private readonly AlexaUserService $alexaUserService,
+        private readonly AlexaSessionRepository $alexaSessionRepository,
+        private readonly AlexaSessionValueRepository $alexaSessionValueRepository
+    ) {
     }
 
     /**

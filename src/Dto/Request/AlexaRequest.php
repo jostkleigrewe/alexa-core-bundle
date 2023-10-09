@@ -29,32 +29,32 @@ class AlexaRequest
     /**
      * The session object provides additional context associated with the request.
      *
-     * @var AlexaRequestSession $session
+     * @var null|AlexaRequestSession $session
      * @Annotation\SerializedName("session")
      */
-    private AlexaRequestSession $session;
+    private ?AlexaRequestSession $session = null;
 
     /**
      * The context object provides your skill with information about the current state
      *
-     * @var AlexaRequestContext $context
+     * @var null|AlexaRequestContext $context
      * @Annotation\SerializedName("context")
      */
-    private AlexaRequestContext $context;
+    private ?AlexaRequestContext $context = null;
 
     /**
      * The request object provides the details of the user’s request.
      *
-     * @var AlexaRequestRequest $request
+     * @var null|AlexaRequestRequest $request
      * @Annotation\SerializedName("request")
      */
-    private AlexaRequestRequest $request;
+    private ?AlexaRequestRequest $request = null;
 
     public function __construct()
     {
-        $this->session = new AlexaRequestSession();
-        $this->context = new AlexaRequestContext();
-        $this->request = new AlexaRequestRequest();
+//        $this->session = new AlexaRequestSession();
+//        $this->context = new AlexaRequestContext();
+//        $this->request = new AlexaRequestRequest();
     }
 
     public function getVersion(): string
@@ -68,7 +68,7 @@ class AlexaRequest
         return $this;
     }
 
-    public function getSession(): AlexaRequestSession
+    public function getSession(): ?AlexaRequestSession
     {
         return $this->session;
     }
@@ -79,33 +79,22 @@ class AlexaRequest
         return $this;
     }
 
-    public function getContext(): AlexaRequestContext
+    public function getContext(): ?AlexaRequestContext
     {
         return $this->context;
     }
 
-    /**
-     * @param  AlexaRequestContext $context
-     * @return AlexaRequest
-     */
     public function setContext(AlexaRequestContext $context): AlexaRequest
     {
         $this->context = $context;
         return $this;
     }
 
-    /**
-     * @return AlexaRequestRequest
-     */
-    public function getRequest(): AlexaRequestRequest
+    public function getRequest(): ?AlexaRequestRequest
     {
         return $this->request;
     }
 
-    /**
-     * @param  AlexaRequestRequest $request
-     * @return AlexaRequest
-     */
     public function setRequest(AlexaRequestRequest $request): AlexaRequest
     {
         $this->request = $request;

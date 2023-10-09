@@ -67,10 +67,6 @@ class AlexaDevice
         return $this->alexaUsers;
     }
 
-    /**
-     * @param AlexaUser $alexaUser
-     * @return $this
-     */
     public function addAlexaUser(AlexaUser $alexaUser): static
     {
         if (!$this->alexaUsers->contains($alexaUser)) {

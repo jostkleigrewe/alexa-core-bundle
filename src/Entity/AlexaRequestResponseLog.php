@@ -4,81 +4,51 @@ declare(strict_types = 1);
 namespace Jostkleigrewe\AlexaCoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Jostkleigrewe\AlexaCoreBundle\Repository\AlexaRequestResponseLogRepository;
 
-/**
- * @ORM\Entity(repositoryClass="Jostkleigrewe\AlexaCoreBundle\Repository\AlexaRequestResponseLogRepository")
- * @ORM\Table(name="alexa_request_response_log")
- */
+#[ORM\Entity(repositoryClass: AlexaRequestResponseLogRepository::class)]
+#[ORM\Table(name: "alexa_request_response_log")]
 class AlexaRequestResponseLog
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @var string $request
-     * @ORM\Column(type="json")
-     */
-    private $request;
+    #[ORM\Column(type:'json')]
+    private string $request;
 
-    /**
-     * @var string $response
-     * @ORM\Column(type="json")
-     */
-    private $response;
+    #[ORM\Column(type:'json')]
+    private string $response;
 
-    /**
-     * @return mixed
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param mixed $id
-     * @return AlexaRequestResponseLog
-     */
-    public function setId($id)
+    public function setId(?int $id): static
     {
         $this->id = $id;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getRequest(): string
     {
         return $this->request;
     }
 
-    /**
-     * @param string $request
-     * @return AlexaRequestResponseLog
-     */
-    public function setRequest(string $request): AlexaRequestResponseLog
+    public function setRequest(string $request): static
     {
         $this->request = $request;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getResponse(): string
     {
         return $this->response;
     }
 
-    /**
-     * @param string $response
-     * @return AlexaRequestResponseLog
-     */
-    public function setResponse(string $response): AlexaRequestResponseLog
+    public function setResponse(string $response): static
     {
         $this->response = $response;
         return $this;

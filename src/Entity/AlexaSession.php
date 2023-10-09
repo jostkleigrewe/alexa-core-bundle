@@ -3,126 +3,98 @@ declare(strict_types = 1);
 
 namespace Jostkleigrewe\AlexaCoreBundle\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Jostkleigrewe\AlexaCoreBundle\Repository\AlexaSessionRepository;
 
-/**
- * Class AlexaSession
- *
- * @ORM\Entity(repositoryClass="Jostkleigrewe\AlexaCoreBundle\Repository\AlexaSessionRepository")
- * @ORM\Table(name="alexa_session")
- *
- * @package Jostkleigrewe\AlexaCoreBundle\Entity
- */
+#[ORM\Entity(repositoryClass: AlexaSessionRepository::class)]
+#[ORM\Table(name: "alexa_session")]
 class AlexaSession
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="bigint")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @var string $sessionId
-     * @ORM\Column(type="string", length=255, unique=true, nullable=false, options={"collate"="utf8_unicode_ci", "charset"="utf8"})
-     */
-    private $sessionId;
+    #[ORM\Column(length: 255, unique: true, nullable: false)]
+    private string $sessionId;
 
-    /**
-     * @var AlexaUser $alexaUser
-     * @ORM\ManyToOne(targetEntity="Jostkleigrewe\AlexaCoreBundle\Entity\AlexaUser")
-     */
-    private $alexaUser;
+    #[ORM\ManyToOne(targetEntity: AlexaUser::class)]
+    private AlexaUser $alexaUser;
 
-    /**
-     * @var AlexaDevice $alexaDevices
-     * @ORM\ManyToOne(targetEntity="Jostkleigrewe\AlexaCoreBundle\Entity\AlexaDevice")
-     */
-    private $alexaDevice;
+    #[ORM\ManyToOne(targetEntity: AlexaDevice::class)]
+    private AlexaDevice $alexaDevice;
 
-    /**
-     * @var ArrayCollection|AlexaSessionValue[] $sessionValues
-     * @ORM\OneToMany(targetEntity="Jostkleigrewe\AlexaCoreBundle\Entity\AlexaSessionValue", mappedBy="alexaSession")
-     */
-    private $sessionValues;
+    #[ORM\OneToMany(targetEntity: AlexaSessionValue::class, mappedBy: 'alexaSession')]
+    private Collection $sessionValues;
 
-    /**
-     * AlexaDevice constructor.
-     */
     public function __construct() {
         $this->sessionValues = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(?int $id): AlexaSession
+    {
+        $this->id = $id;
+        return $this;
+    }
+
     public function getSessionId(): string
     {
         return $this->sessionId;
     }
 
-    /**
-     * @param string $sessionId
-     * @return self
-     */
-    public function setSessionId(string $sessionId): self
+    public function setSessionId(string $sessionId): AlexaSession
     {
         $this->sessionId = $sessionId;
         return $this;
     }
 
-    /**
-     * @return AlexaUser
-     */
     public function getAlexaUser(): AlexaUser
     {
         return $this->alexaUser;
     }
 
-    /**
-     * @param AlexaUser $alexaUser
-     * @return self
-     */
-    public function setAlexaUser(AlexaUser $alexaUser): self
+    public function setAlexaUser(AlexaUser $alexaUser): AlexaSession
     {
         $this->alexaUser = $alexaUser;
         return $this;
     }
 
-    /**
-     * @return AlexaDevice
-     */
     public function getAlexaDevice(): AlexaDevice
     {
         return $this->alexaDevice;
     }
 
-    /**
-     * @param AlexaDevice $alexaDevice
-     * @return self
-     */
-    public function setAlexaDevice(AlexaDevice $alexaDevice): self
+    public function setAlexaDevice(AlexaDevice $alexaDevice): AlexaSession
     {
         $this->alexaDevice = $alexaDevice;
         return $this;
     }
 
-    /**
-     * @return AlexaSessionValue[]|ArrayCollection
-     */
-    public function getSessionValues()
+    public function getSessionValues(): Collection
     {
         return $this->sessionValues;
     }
 
-    /**
-     * @param AlexaSessionValue[]|ArrayCollection $sessionValues
-     * @return self
-     */
-    public function setSessionValues($sessionValues): self
+    public function addSessionValue(AlexaSessionValue $alexaSessionValue): static
     {
-        $this->sessionValues = $sessionValues;
+        if (!$this->sessionValues->contains($alexaSessionValue)) {
+            $this->sessionValues->add($alexaSessionValue);
+        }
+
+        return $this;
+    }
+
+    public function removeSessionValue(AlexaSessionValue $alexaSessionValue): static
+    {
+        $this->sessionValues->removeElement($alexaSessionValue);
+
         return $this;
     }
 

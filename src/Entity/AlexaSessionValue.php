@@ -4,100 +4,65 @@ declare(strict_types = 1);
 namespace Jostkleigrewe\AlexaCoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Jostkleigrewe\AlexaCoreBundle\Repository\AlexaSessionValueRepository;
 
-/**
- * Class AlexaSessionValue
- *
- * @ORM\Entity(repositoryClass="Jostkleigrewe\AlexaCoreBundle\Repository\AlexaSessionValueRepository")
- * @ORM\Table(name="alexa_session_value")
- *
- * @package   Jostkleigrewe\AlexaCoreBundle\Entity
- * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
- * @copyright 2020 Sven Jostkleigrewe
- */
+#[ORM\Entity(repositoryClass: AlexaSessionValueRepository::class)]
+#[ORM\Table(name: "alexa_session_value")]
 class AlexaSessionValue
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="bigint")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @var AlexaUser $alexaSession
-     * @ORM\ManyToOne(targetEntity="Jostkleigrewe\AlexaCoreBundle\Entity\AlexaSession", inversedBy="sessionValues")
-     */
-    private $alexaSession;
+    #[ORM\ManyToOne(targetEntity: AlexaSession::class, inversedBy: "sessionValues")]
+    private AlexaUser $alexaSession;
 
-    /**
-     * @var string $key
-     * @ORM\Column(type="string", length=255, unique=true, nullable=false, options={"collate"="utf8_unicode_ci", "charset"="utf8"})
-     */
-    private $key;
+    #[ORM\Column(type: "string",length: 255, unique: true, nullable: false)]
+    private string $key;
 
-    /**
-     * @var string $value
-     * @ORM\Column(type="text")
-     */
-    private $value;
+    #[ORM\Column(type: "text")]
+    private string $value;
 
-    /**
-     * AlexaDevice constructor.
-     */
-    public function __construct() {
-
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
-    /**
-     * @return AlexaUser
-     */
+    public function setId(?int $id): AlexaSessionValue
+    {
+        $this->id = $id;
+        return $this;
+    }
+
     public function getAlexaSession(): AlexaUser
     {
         return $this->alexaSession;
     }
 
-    /**
-     * @param AlexaUser $alexaSession
-     * @return self
-     */
-    public function setAlexaSession(AlexaUser $alexaSession): self
+    public function setAlexaSession(AlexaUser $alexaSession): AlexaSessionValue
     {
         $this->alexaSession = $alexaSession;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getKey(): string
     {
         return $this->key;
     }
 
-    /**
-     * @param string $key
-     * @return self
-     */
-    public function setKey(string $key): self
+    public function setKey(string $key): AlexaSessionValue
     {
         $this->key = $key;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getValue(): string
     {
         return $this->value;
     }
 
-    /**
-     * @param string $value
-     * @return self
-     */
-    public function setValue(string $value): self
+    public function setValue(string $value): AlexaSessionValue
     {
         $this->value = $value;
         return $this;

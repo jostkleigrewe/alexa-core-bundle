@@ -7,7 +7,7 @@ use Jostkleigrewe\AlexaCoreBundle\Entity\AlexaSession;
 use Jostkleigrewe\AlexaCoreBundle\Entity\AlexaUser;
 use Jostkleigrewe\AlexaCoreBundle\Exception\AlexaCoreException;
 use Jostkleigrewe\AlexaCoreBundle\Repository\AlexaUserRepository;
-use Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequest;
+use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequest;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -18,42 +18,14 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class AlexaUserService
 {
+    private ?AlexaUser $alexaUser;
 
-    /**
-     * @var AlexaUserRepository $alexaUserRepository
-     */
-    private $alexaUserRepository;
-
-    /**
-     * @var AlexaUser $alexaUser
-     */
-    private $alexaUser;
-
-    /**
-     * @var AlexaRequestService $alexaRequestService
-     */
-    private $alexaRequestService;
-
-    /**
-     * @var EntityManagerInterface $entityManager
-     */
-    private $entityManager;
-
-    /**
-     * AlexaUserService constructor.
-     * @param AlexaRequestService $alexaRequestService
-     * @param AlexaUserRepository $alexaUserRepository
-     * @param EntityManagerInterface $entityManager
-     */
     public function __construct(
-        AlexaRequestService $alexaRequestService,
-        AlexaUserRepository $alexaUserRepository,
-        EntityManagerInterface $entityManager
+        private readonly AlexaRequestService $alexaRequestService,
+        private readonly AlexaUserRepository $alexaUserRepository,
+        private readonly EntityManagerInterface $entityManager
     )
     {
-        $this->alexaRequestService = $alexaRequestService;
-        $this->alexaUserRepository = $alexaUserRepository;
-        $this->entityManager = $entityManager;
     }
 
     /**
@@ -84,12 +56,7 @@ class AlexaUserService
         return $this->getAlexaUserByAlexaRequest($alexaRequest);
     }
 
-    /**
-     * @param AlexaRequest $alexaRequest
-     * @return AlexaUser
-     * @throws AlexaCoreException
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     */
+
     public function getAlexaUserByAlexaRequest(AlexaRequest $alexaRequest): AlexaUser
     {
         $alexaUserId = $alexaRequest->getSession()->getUser()->getUserId();
@@ -103,12 +70,6 @@ class AlexaUserService
     }
 
 
-    /**
-     * @param AlexaRequest $alexaRequest
-     *
-     * @return void
-     * @throws AlexaCoreException
-     */
     public function createAlexaUserByAlexaRequest(AlexaRequest $alexaRequest): AlexaUser
     {
         $user = new AlexaUser();

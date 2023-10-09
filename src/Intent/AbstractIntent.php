@@ -7,11 +7,8 @@ use Jostkleigrewe\AlexaCoreBundle\IntentSlot\RequiredSlot;
 use Jostkleigrewe\AlexaCoreBundle\Manager\AlexaCoreManager;
 use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequest;
 use Jostkleigrewe\AlexaCoreBundle\Dto\Response\AlexaResponse;
-use Jostkleigrewe\AlexaCoreBundle\Workflow\Service\AbstractWorkflowService;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Workflow\Registry;
 use Jostkleigrewe\AlexaCoreBundle\Exception\AlexaCoreException;
-
 
 /**
  * Class AbstractIntent
@@ -20,7 +17,7 @@ use Jostkleigrewe\AlexaCoreBundle\Exception\AlexaCoreException;
  * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
  * @copyright 2021 Sven Jostkleigrewe
  */
-abstract class AbstractIntent extends AbstractWorkflowService implements IntentInterface
+abstract class AbstractIntent  implements IntentInterface
 {
 
     const VALID_INTENTS = [];

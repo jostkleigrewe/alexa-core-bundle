@@ -42,10 +42,10 @@ class AlexaRequestRequest
     /**
      * Describes the request type with the value as: "LaunchRequest"
      *
-     * @var string $type
+     * @var null|string $type
      * @Annotation\SerializedName("type")
      */
-    private string $type;
+    private ?string $type = null;
 
     /**
      * Represents a unique identifier for the specific request.

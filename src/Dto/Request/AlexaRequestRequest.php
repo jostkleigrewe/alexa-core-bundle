@@ -91,10 +91,8 @@ class AlexaRequestRequest
      */
     private string $dialogState;
 
-    /**
-     * @return string
-     */
-    public function getType(): string
+
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -109,9 +107,6 @@ class AlexaRequestRequest
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getRequestId(): string
     {
         return $this->requestId;
@@ -127,19 +122,12 @@ class AlexaRequestRequest
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getTimestamp(): \DateTime
+    public function getTimestamp(): DateTimeImmutable
     {
         return $this->timestamp;
     }
 
-    /**
-     * @param \DateTime $timestamp
-     * @return self
-     */
-    public function setTimestamp(\DateTime $timestamp): self
+    public function setTimestamp(DateTimeImmutable $timestamp): static
     {
         $this->timestamp = $timestamp;
         return $this;

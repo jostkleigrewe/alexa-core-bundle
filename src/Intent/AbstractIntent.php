@@ -22,12 +22,6 @@ abstract class AbstractIntent  implements IntentInterface
 
     const VALID_INTENTS = [];
     const IS_FALLBACK = false;
-    const WORKFLOW = 'unknown';
-
-    /**
-     * @var AlexaCoreManager $manager
-     */
-    private $manager;
 
     /**
      * @var ArrayCollection|RequiredSlot[] $intentSlots
@@ -38,15 +32,11 @@ abstract class AbstractIntent  implements IntentInterface
      * AbstractIntent constructor.
      *
      * @param AlexaCoreManager $alexaCoreManager
-     * @param Registry $workflowRegistry
      */
     public function __construct(
-        AlexaCoreManager $alexaCoreManager,
-        Registry $workflowRegistry
+        private readonly AlexaCoreManager $alexaCoreManager,
     ) {
-        $this->manager = $alexaCoreManager;
         $this->intentSlots = new ArrayCollection();
-        parent::__construct($workflowRegistry);
     }
 
     /**
@@ -116,7 +106,7 @@ abstract class AbstractIntent  implements IntentInterface
      */
     protected  function getManager(): AlexaCoreManager
     {
-        return $this->manager;
+        return $this->alexaCoreManager;
     }
 
     /**

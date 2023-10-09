@@ -18,7 +18,7 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class AlexaUserService
 {
-    private ?AlexaUser $alexaUser;
+    private ?AlexaUser $alexaUser = null;
 
     public function __construct(
         private readonly AlexaRequestService $alexaRequestService,

@@ -87,7 +87,7 @@ class AlexaRequestContextViewport
     /**
      * Different modes in which the customer is expected to interact with the viewport.
      *
-     * @var Collection<string,AlexaRequestContextViewportExperience> $experiences
+     * @var Collection<AlexaRequestContextViewportExperience> $experiences
      * @Annotation\SerializedName("experiences")
      */
     private Collection $experiences;

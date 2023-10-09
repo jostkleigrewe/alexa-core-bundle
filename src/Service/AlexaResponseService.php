@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class AlexaResponseService
 {
-    private ?AlexaResponse $alexaResponse;
+    private ?AlexaResponse $alexaResponse = null;
 
     /**
      * AlexaResponseService constructor.

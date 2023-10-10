@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace Jostkleigrewe\AlexaCoreBundle\Dto\Request;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation;
 
 /**
@@ -36,11 +37,10 @@ class AlexaRequestRequestIntent
     private string $confirmationStatus;
 
     /**
-     * @var ArrayCollection<string,AlexaRequestRequestIntentSlot> $slots
-     *
+     * @var Collection<string,AlexaRequestRequestIntentSlot> $slots
      * @Annotation\SerializedName("slots")
      */
-    private ArrayCollection $slots;
+    private Collection $slots;
 
     /**
      * AlexaRequestRequestIntent constructor.
@@ -103,33 +103,25 @@ class AlexaRequestRequestIntent
         return $this->slots->offsetGet($slotName);
     }
 
-//    /**
-//     * @param AlexaRequestRequestIntentSlot $alexaRequestRequestIntentSlot
-//     * @return AlexaRequestRequestIntent
-//     */
-//    public function addSlot(AlexaRequestRequestIntentSlot $alexaRequestRequestIntentSlot): AlexaRequestRequestIntent
-//    {
-//        $this->slots->add($alexaRequestRequestIntentSlot);
-//        return $this;
-//    }
-//
-//    /**
-//     * @param AlexaRequestRequestIntentSlot $alexaRequestRequestIntentSlot
-//     * @return AlexaRequestRequestIntent
-//     */
-//    public function removeSlot(AlexaRequestRequestIntentSlot $alexaRequestRequestIntentSlot): AlexaRequestRequestIntent
-//    {
-//        $this->slots->remove($alexaRequestRequestIntentSlot);
-//        return $this;
-//    }
-//
-//    /**
-//     * @param ArrayCollection $slots
-//     * @return AlexaRequestRequestIntent
-//     */
-//    public function setSlots(ArrayCollection $slots): AlexaRequestRequestIntent
-//    {
-//        $this->slots = $slots;
-//        return $this;
-//    }
+    public function addSlot(AlexaRequestRequestIntentSlot $slot): static
+    {
+        if (!$this->slots->contains($slot)) {
+            $this->slots->add($slot);
+        }
+        return $this;
+    }
+
+    public function removeSlot(AlexaRequestRequestIntentSlot $slot): static
+    {
+        if ($this->slots->contains($slot)) {
+            $this->slots->removeElement($slot);
+        }
+        return $this;
+    }
+
+    public function setSlots(Collection $slots): AlexaRequestRequestIntent
+    {
+        $this->slots = $slots;
+        return $this;
+    }
 }

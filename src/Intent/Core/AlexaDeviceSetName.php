@@ -11,9 +11,9 @@ use Jostkleigrewe\AlexaCoreBundle\Intent\AbstractIntent;
 /**
  * Class AlexaDeviceSetName
  *
- * @package Jostkleigrewe\AlexaCoreBundle\Intent\Core
- * @author Sven Jostkleigrewe <sven@jostkleigrewe.com>
- * @copyright 2021 Sven Jostkleigrewe
+ * @package   Jostkleigrewe\AlexaCoreBundle\Intent
+ * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
+ * @copyright 2023 Sven Jostkleigrewe
  */
 class AlexaDeviceSetName extends AbstractFallbackIntent
 {

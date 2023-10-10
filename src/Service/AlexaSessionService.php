@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Jostkleigrewe\AlexaCoreBundle\Service;
 
+use Doctrine\ORM\NonUniqueResultException;
 use Jostkleigrewe\AlexaCoreBundle\Entity\AlexaSession;
 use Jostkleigrewe\AlexaCoreBundle\Exception\AlexaCoreException;
 use Jostkleigrewe\AlexaCoreBundle\Manager\AlexaCoreManager;
@@ -21,25 +22,21 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AlexaSessionService
 {
-    /**
-     * @var null|AlexaSession $alexaSession
-     */
-    private ?AlexaSession $alexaSession = null;
-
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
         private readonly AlexaRequestService $alexaRequestService,
         private readonly AlexaDeviceService $alexaDeviceService,
         private readonly AlexaUserService $alexaUserService,
         private readonly AlexaSessionRepository $alexaSessionRepository,
-        private readonly AlexaSessionValueRepository $alexaSessionValueRepository
+        private readonly AlexaSessionValueRepository $alexaSessionValueRepository,
+        private ?AlexaSession $alexaSession = null
     ) {
     }
 
     /**
      * @return AlexaSession
      * @throws AlexaCoreException
-     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws NonUniqueResultException
      */
     public function getAlexaSession(): AlexaSession
     {
@@ -55,9 +52,8 @@ class AlexaSessionService
      *
      * @return AlexaSession
      * @throws AlexaCoreException
-     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws NonUniqueResultException
      */
-
     public function createAlexaSessionBySymfonyRequest(): AlexaSession
     {
         $alexaRequest = $this->getAlexaRequestService()->getAlexaRequest();
@@ -69,7 +65,7 @@ class AlexaSessionService
      * @param AlexaRequest $alexaRequest
      * @return AlexaSession
      * @throws AlexaCoreException
-     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws NonUniqueResultException
      */
     public function getAlexaSessionByAlexaRequest(AlexaRequest $alexaRequest): AlexaSession
     {
@@ -87,7 +83,7 @@ class AlexaSessionService
      * @param AlexaRequest $alexaRequest
      * @return AlexaSession
      * @throws AlexaCoreException
-     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws NonUniqueResultException
      */
     public function createAlexaSessionByAlexaRequest(AlexaRequest $alexaRequest): AlexaSession
     {

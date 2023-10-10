@@ -18,6 +18,8 @@ use Doctrine\ORM\EntityManagerInterface;
 /**
  * Class AlexaCoreManager
  *
+ * contains all services for alexa-core-bundle
+ *
  * @package   Jostkleigrewe\AlexaCoreBundle
  * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
  * @copyright 2023 Sven Jostkleigrewe
@@ -37,7 +39,7 @@ readonly class AlexaCoreManager
     }
 
     /**
-     * fetch current alexa-request
+     * shortcut to fetch current alexa-request
      *
      * @return AlexaRequest
      * @throws AlexaCoreException
@@ -48,6 +50,8 @@ readonly class AlexaCoreManager
     }
 
     /**
+     * shortcut to fetch current alexa-response
+     *
      * @return AlexaResponse
      * @throws AlexaCoreException
      */
@@ -56,6 +60,13 @@ readonly class AlexaCoreManager
         return $this->getAlexaResponseService()->getAlexaResponse();
     }
 
+    /**
+     * shortcut to fetch current alexa-session
+     *
+     * @return AlexaSession
+     * @throws AlexaCoreException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function getAlexaSession(): AlexaSession
     {
         return $this->getAlexaSessionService()->getAlexaSession();

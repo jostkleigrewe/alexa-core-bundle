@@ -28,7 +28,7 @@ class AlexaUserSetName extends AbstractFallbackIntent
     public function createResponse() {
 
         $alexaUserId = $this->getAlexaRequest()->getSession()->getUser()->getUserId();
-        $newName = $this->getAlexaRequest()->getRequest()->getIntent()->getSlots()->get('name')->getValue();
+        $newName = $this->getAlexaRequest()->getRequest()->getIntent()?->getSlotByName('name')->getValue();
 
         $alexaUser = $this->getManager()->getAlexaUserService()->getAlexaUserRepository()->findOneByAlexaId($alexaUserId);
         if ($alexaUser) {

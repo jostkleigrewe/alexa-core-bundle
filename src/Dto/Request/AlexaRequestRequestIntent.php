@@ -37,7 +37,7 @@ class AlexaRequestRequestIntent
     private string $confirmationStatus;
 
     /**
-     * @var array $slots
+     * @var array<string,AlexaRequestRequestIntentSlot> $slots
      * @Annotation\SerializedName("slots")
      */
     private array $slots;

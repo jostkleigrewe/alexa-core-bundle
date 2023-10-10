@@ -108,7 +108,7 @@ class AlexaResponseService
                 );
         }
 
-        $alexaResponse->setStatusCode(500);
+        $alexaResponse->setStatusCode(200);
 
         return $alexaResponse;
     }

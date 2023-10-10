@@ -37,17 +37,14 @@ class AlexaRequestRequestIntent
     private string $confirmationStatus;
 
     /**
-     * @var Collection<string,AlexaRequestRequestIntentSlot> $slots
+     * @var array $slots
      * @Annotation\SerializedName("slots")
      */
-    private Collection $slots;
+    private array $slots;
 
-    /**
-     * AlexaRequestRequestIntent constructor.
-     */
     public function __construct()
     {
-        $this->slots = new ArrayCollection();
+        $this->slots = [];
     }
 
     /**
@@ -86,42 +83,18 @@ class AlexaRequestRequestIntent
         return $this;
     }
 
-    /**
-     * @return ArrayCollection<string,AlexaRequestRequestIntentSlot>
-     */
-    public function getSlots(): ArrayCollection
+    public function getSlots(): array
     {
         return $this->slots;
     }
 
-    /**
-     * @param string $slotName
-     * @return AlexaRequestRequestIntentSlot|null
-     */
     public function getSlotByName(string $slotName): ?AlexaRequestRequestIntentSlot
     {
-        return $this->slots->offsetGet($slotName);
+        return $this->slots[$slotName] ?? null;
     }
 
-    public function addSlot(AlexaRequestRequestIntentSlot $slot): static
-    {
-        if (!$this->slots->contains($slot)) {
-            $this->slots->add($slot);
-        }
-        return $this;
-    }
-
-    public function removeSlot(AlexaRequestRequestIntentSlot $slot): static
-    {
-        if ($this->slots->contains($slot)) {
-            $this->slots->removeElement($slot);
-        }
-        return $this;
-    }
-
-    public function setSlots(Collection $slots): AlexaRequestRequestIntent
+    public function setSlots(array $slots): void
     {
         $this->slots = $slots;
-        return $this;
     }
 }

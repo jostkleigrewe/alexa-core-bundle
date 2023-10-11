@@ -33,7 +33,7 @@ class AlexaRequestRequestIntentSlot
      * @var string|null $value
      * @Annotation\SerializedName("value")
      */
-    private string $value;
+    private ?string $value = null;
 
     /**
      * An enumeration indicating whether the user has explicitly confirmed or denied the value of this slot.

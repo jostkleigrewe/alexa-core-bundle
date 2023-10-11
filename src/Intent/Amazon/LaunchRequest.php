@@ -25,6 +25,7 @@ class LaunchRequest extends AbstractFallbackIntent
         $text = 'Start der Applikation';
 
         $this->getAlexaResponse()->getResponse()->getOutputSpeech()->setText($text);
+        $this->getAlexaResponse()->getResponse()->getCard()->setText($text);
 
         return true;
     }

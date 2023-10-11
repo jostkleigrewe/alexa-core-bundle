@@ -30,7 +30,7 @@ class AlexaDeviceSetName extends AbstractFallbackIntent
         $alexaUser = $this->getManager()->getAlexaUserService()->getAlexaUserRepository()->findOneByAlexaId($alexaUserId);
         $alexaDevice = $this->getManager()->getAlexaDeviceService()->getAlexaDeviceRepository()->findOneByDeviceId($alexaDeviceId);
 
-        $newName = $this->getAlexaRequest()->getRequest()->getIntent()->getSlots()->get('devicename')->getValue();
+        $newName = $this->getAlexaRequest()->getRequest()->getIntent()->getSlotByName('devicename')->getValue();
 
         if ($alexaDevice) {
 

@@ -12,5 +12,5 @@ namespace Jostkleigrewe\AlexaCoreBundle\Intent;
  */
 abstract class AbstractFallbackIntent extends AbstractIntent
 {
-    const IS_FALLBACK = true;
+    public const IS_FALLBACK = true;
 }

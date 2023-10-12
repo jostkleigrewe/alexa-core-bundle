@@ -23,9 +23,9 @@ class Cancel extends AbstractFallbackIntent
      * {@inheritDoc}
      * @see AbstractIntent::createResponse()
      */
-    public function createResponse() {
+    public function createResponse(): true {
 
-        $text = 'Hilfe wurde aufgerufen.';
+        $text = 'Cancel wurde aufgerufen.';
 
         $this->getAlexaResponse()->getResponse()->getOutputSpeech()
             ->setText($text)
@@ -33,10 +33,10 @@ class Cancel extends AbstractFallbackIntent
 
         $this->getAlexaResponse()->getResponse()->getCard()
             ->setType(AlexaResponseResponseCard::TYPE_STANDARD)
-            ->setTitle('Hilfe')
+            ->setTitle('Cancel')
             ->setText($text)
-            ->getImage()
-                ->setSmallImageUrl('https://alexa.jostkleigrewe.com/assets/j.jpg')
+//            ->getImage()
+//                ->setSmallImageUrl('https://alexa.jostkleigrewe.com/assets/j.jpg')
         ;
 
         return true;

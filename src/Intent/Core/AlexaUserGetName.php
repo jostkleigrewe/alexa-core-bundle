@@ -25,7 +25,7 @@ class AlexaUserGetName extends AbstractFallbackIntent
     /**
      * @return true
      */
-    public function createResponse() {
+    public function createResponse(): true {
 
 
         $alexaUserId = $this->getAlexaRequest()->getSession()->getUser()->getUserId();

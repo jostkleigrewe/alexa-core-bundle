@@ -20,7 +20,7 @@ class SessionEndedRequest extends AbstractFallbackIntent
      * {@inheritDoc}
      * @see AbstractIntent::createResponse()
      */
-    public function createResponse()
+    public function createResponse(): true
     {
         $text = 'Tschüss.';
 

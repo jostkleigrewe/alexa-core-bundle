@@ -19,7 +19,7 @@ class DefaultFallback extends AbstractFallbackIntent
      * {@inheritDoc}
      * @see AbstractIntent::createResponse()
      */
-    public function createResponse() {
+    public function createResponse(): true {
 
         $text = 'Fallback Intent';
 

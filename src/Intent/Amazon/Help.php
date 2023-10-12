@@ -23,20 +23,18 @@ class Help extends AbstractFallbackIntent
      * {@inheritDoc}
      * @see AbstractIntent::createResponse()
      */
-    public function createResponse() {
+    public function createResponse(): true {
 
         $text = 'Hilfe wurde aufgerufen.';
 
-        $this->getAlexaResponse()->getResponse()->getOutputSpeech()
-            ->setText($text)
-        ;
+        $this->getAlexaResponse()->getResponse()->getOutputSpeech()->setText($text);
 
         $this->getAlexaResponse()->getResponse()->getCard()
             ->setType(AlexaResponseResponseCard::TYPE_STANDARD)
             ->setTitle('Hilfe')
             ->setText($text)
-            ->getImage()
-                ->setSmallImageUrl('https://alexa.jostkleigrewe.com/assets/j.jpg')
+//            ->getImage()
+//                ->setSmallImageUrl('https://alexa.jostkleigrewe.com/assets/j.jpg')
         ;
 
         return true;

@@ -8,24 +8,24 @@ namespace Jostkleigrewe\AlexaCoreBundle\IntentSlot;
  *
  * @package   Jostkleigrewe\AlexaCoreBundle\IntentSlot
  * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
- * @copyright 2020 Sven Jostkleigrewe
+ * @copyright 2023 Sven Jostkleigrewe
  */
 class RequiredSlot
 {
     /**
      * @var string $slotName
      */
-    private $slotName;
+    private string $slotName;
 
     /**
      * @var string $value
      */
-    private $value;
+    private string $value;
 
     /**
      * @var string $askMissing
      */
-    private $askMissing;
+    private string $askMissing;
 
     /**
      * RequiredSlot constructor.

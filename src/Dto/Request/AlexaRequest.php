@@ -50,13 +50,6 @@ class AlexaRequest
      */
     private ?AlexaRequestRequest $request = null;
 
-    public function __construct()
-    {
-//        $this->session = new AlexaRequestSession();
-//        $this->context = new AlexaRequestContext();
-//        $this->request = new AlexaRequestRequest();
-    }
-
     public function getVersion(): string
     {
         return $this->version;

@@ -22,7 +22,7 @@ class AlexaDeviceSetName extends AbstractFallbackIntent
      * {@inheritDoc}
      * @see AbstractIntent::createResponse()
      */
-    public function createResponse() {
+    public function createResponse(): true {
 
         $alexaUserId = $this->getAlexaRequest()->getSession()->getUser()->getUserId();
         $alexaDeviceId = $this->getAlexaRequest()->getContext()->getSystem()->getDevice()->getDeviceId();

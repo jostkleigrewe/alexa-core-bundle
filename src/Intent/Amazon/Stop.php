@@ -22,15 +22,12 @@ class Stop extends AbstractFallbackIntent
      * {@inheritDoc}
      * @see AbstractIntent::createResponse()
      */
-    public function createResponse() {
+    public function createResponse(): true {
 
-        $text = 'Programm wird beendet';
+        $text = 'Applikation wird beendet';
 
-        $this->getAlexaResponse()->getResponse()->getOutputSpeech()
-            ->setText($text);
-        $this->getAlexaResponse()->getResponse()->getCard()
-            ->setTitle('Ende')
-            ->setText($text);
+        $this->getAlexaResponse()->getResponse()->getOutputSpeech()->setText($text);
+        $this->getAlexaResponse()->getResponse()->getCard()->setText($text);
 
         //  Responses to AMAZON.StopIntent must use true or null.
         $this->getAlexaResponse()->getResponse()

@@ -8,26 +8,17 @@ namespace Jostkleigrewe\AlexaCoreBundle\Intent;
  *
  * @package   Jostkleigrewe\AlexaCoreBundle\Intent
  * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
- * @copyright 2021 Sven Jostkleigrewe
+ * @copyright 2023 Sven Jostkleigrewe
  */
 class IntentChain
 {
-    /**
-     * @var array $intents
-     */
     private array $intents;
 
-    /**
-     * IntentChain constructor.
-     */
     public function __construct()
     {
         $this->intents = [];
     }
 
-    /**
-     * @param IntentInterface $intent
-     */
     public function addIntent(IntentInterface $intent): static
     {
         $this->intents[] = $intent;
@@ -35,10 +26,7 @@ class IntentChain
         return $this;
     }
 
-    /**
-     * @return array
-     */
-    public function getIntents(): array
+     public function getIntents(): array
     {
         return $this->intents;
     }

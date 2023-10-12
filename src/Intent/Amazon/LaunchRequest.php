@@ -9,18 +9,22 @@ use Jostkleigrewe\AlexaCoreBundle\Intent\AbstractIntent;
 /**
  * Class LaunchRequest
  *
+ * This intent is called when the skill is started.
+ *
  * @package   Jostkleigrewe\AlexaCoreBundle\Intent
  * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
- * @copyright 2021 Sven Jostkleigrewe
+ * @copyright 2023 Sven Jostkleigrewe
  */
 class LaunchRequest extends AbstractFallbackIntent
 {
+    const VALID_INTENTS = ['VALID_INTENTS'];
 
     /**
      * {@inheritDoc}
      * @see AbstractIntent::createResponse()
      */
-    public function createResponse() {
+    public function createResponse(): bool
+    {
 
         $text = 'Start der Applikation';
 

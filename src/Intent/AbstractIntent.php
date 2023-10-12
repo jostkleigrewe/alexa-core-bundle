@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Jostkleigrewe\AlexaCoreBundle\Intent;
 
+use Doctrine\Common\Collections\Collection;
 use Jostkleigrewe\AlexaCoreBundle\IntentSlot\RequiredSlot;
 use Jostkleigrewe\AlexaCoreBundle\Manager\AlexaCoreManager;
 use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequest;
@@ -20,13 +21,13 @@ use Jostkleigrewe\AlexaCoreBundle\Exception\AlexaCoreException;
 abstract class AbstractIntent  implements IntentInterface
 {
 
-    const VALID_INTENTS = [];
-    const IS_FALLBACK = false;
+    public const VALID_INTENTS = [];
+    public const IS_FALLBACK = false;
 
     /**
-     * @var ArrayCollection|RequiredSlot[] $intentSlots
+     * @var Collection<RequiredSlot> $intentSlots
      */
-    private $intentSlots;
+    private Collection $intentSlots;
 
     /**
      * AbstractIntent constructor.
@@ -40,10 +41,10 @@ abstract class AbstractIntent  implements IntentInterface
     }
 
     /**
-     * @return bool|mixed
+     * @return bool
      * @throws AlexaCoreException
      */
-    abstract protected function createResponse();
+    abstract protected function createResponse(): bool;
 
     /**
      * {@inheritdoc}

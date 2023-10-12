@@ -34,11 +34,17 @@
         "psr-4": { "Jostkleigrewe\\AlexaCoreBundle\\": "src/" }
     },
     "autoload-dev": {
-        "psr-4": {
-        }
+        "psr-4": { "Jostkleigrewe\\AlexaCoreBundle\\Tests\\": "tests/" }
     },
     "extra": {
         "branch-alias": {
         }
+    },
+    "require-dev": {
+        "symfony/test-pack": "dev-main"
+    },
+    "scripts": {
+        "phpunit": "php vendor/bin/phpunit",
+        "phpunit-coverage": "XDEBUG_MODE=coverage php vendor/bin/phpunit --coverage-html=var/coverage"
     }
 }

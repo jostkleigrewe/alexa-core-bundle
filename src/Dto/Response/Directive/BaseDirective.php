@@ -19,41 +19,33 @@ class BaseDirective implements DirectiveInterface
 
     /**
      * @var string $type
-     *
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("type")
      */
-    private $type;
+    private string $type;
 
     /**
      * An intent object. Use this to change intents during the dialog or set slot values and confirmation status.
      *
      * @var AlexaRequestRequestIntent $updatedIntent
-     *
-     * @Annotation\Type("Jostkleigrewe\AlexaCoreBundle\Request\AlexaRequestRequestIntent")
      * @Annotation\SerializedName("updatedIntent")
      */
-    private $updatedIntent;
+    private AlexaRequestRequestIntent $updatedIntent;
 
     /**
      * The name of the slot to confirm.
      *
      * @var string $slotToConfirm|null
-     *
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("slotToConfirm")
      */
-    private $slotToConfirm;
+    private string $slotToConfirm;
 
     /**
      * The name of the slot to elicit.
      *
      * @var string $slotToElicit|null
-     *
-     * @Annotation\Type("string")
      * @Annotation\SerializedName("slotToElicit")
      */
-    private $slotToElicit;
+    private string $slotToElicit;
 
     /**
      * AlexaResponse constructor.

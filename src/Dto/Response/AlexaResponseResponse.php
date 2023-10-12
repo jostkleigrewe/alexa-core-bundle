@@ -176,7 +176,7 @@ class AlexaResponseResponse
      */
     public function removeDirective(DirectiveInterface $directive): self
     {
-        $this->directives->remove($directive);
+        $this->directives->removeElement($directive);
         return $this;
     }
 

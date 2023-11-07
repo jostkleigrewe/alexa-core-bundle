@@ -1,0 +1,152 @@
+parameters:
+  jostkleigrewe_alexa_core.intent_collection.class: 'Jostkleigrewe\AlexaCoreBundle\Intent\IntentCollection'
+
+services:
+
+  # Services
+
+  Jostkleigrewe\AlexaCoreBundle\Manager\AlexaCoreManager:
+    public: true
+    autowire: true
+
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaApiClientService:
+    public: true
+    autowire: true
+
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaCoreService:
+    public: true
+    autowire: true
+
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaRequestService:
+    public: true
+    autowire: true
+
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaResponseService:
+    public: true
+    autowire: true
+
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaSessionService:
+    public: true
+    autowire: true
+
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaLogService:
+    public: true
+    autowire: true
+
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaUserService:
+    public: true
+    autowire: true
+
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaDeviceService:
+    public: true
+    autowire: true
+
+  Jostkleigrewe\AlexaCoreBundle\Service\IntentService:
+    public: true
+    autowire: true
+
+
+# Intents
+
+  # Intent: Amazon.Fallback
+  Jostkleigrewe\AlexaCoreBundle\Intent\Amazon\Fallback:
+    public: true
+    autowire: true
+    tags: ['alexa_core.intent']
+
+  # Intent: Amazon.LaunchRequest
+  Jostkleigrewe\AlexaCoreBundle\Intent\Amazon\LaunchRequest:
+    public: true
+    autowire: true
+    tags: ['alexa_core.intent']
+
+  # Intent: Amazon.SessionEndedRequest
+  Jostkleigrewe\AlexaCoreBundle\Intent\Amazon\SessionEndedRequest:
+    public: true
+    autowire: true
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Amazon\Stop:
+    public: true
+    autowire: true
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Amazon\Help:
+    public: true
+    autowire: true
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Amazon\Cancel:
+    public: true
+    autowire: true
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Core\AlexaUserGetName:
+    public: true
+    autowire: true
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Core\AlexaUserSetName:
+    public: true
+    autowire: true
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Core\AlexaDeviceGetName:
+    public: true
+    autowire: true
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Core\AlexaDeviceSetName:
+    public: true
+    autowire: true
+    tags: ['alexa_core.intent']
+
+  # Repositories
+
+  Jostkleigrewe\AlexaCoreBundle\Repository\AlexaUserRepository:
+    public: true
+    autowire: true
+    tags: ['doctrine.repository_service']
+
+  Jostkleigrewe\AlexaCoreBundle\Repository\AlexaDeviceRepository:
+    public: true
+    autowire: true
+    tags: ['doctrine.repository_service']
+
+  Jostkleigrewe\AlexaCoreBundle\Repository\AlexaSessionRepository:
+    public: true
+    autowire: true
+    tags: ['doctrine.repository_service']
+
+  Jostkleigrewe\AlexaCoreBundle\Repository\AlexaSessionValueRepository:
+    public: true
+    autowire: true
+    tags: ['doctrine.repository_service']
+
+  Jostkleigrewe\AlexaCoreBundle\Repository\AlexaUserValueRepository:
+    public: true
+    autowire: true
+    tags: ['doctrine.repository_service']
+
+  Jostkleigrewe\AlexaCoreBundle\Repository\AlexaRequestResponseLogRepository:
+    public: true
+    autowire: true
+    tags: ['doctrine.repository_service']
+
+  # Chains
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\IntentChain:
+    public: true
+    autowire: true
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\IntentCollection:
+    public: true
+    autowire: true
+    arguments: ['!tagged_iterator alexa_core.intent']
+
+  # Commands
+
+  Jostkleigrewe\AlexaCoreBundle\Command\DebugIntentsCommand:
+    public: true
+    autowire: true
+    tags: ['console.command']

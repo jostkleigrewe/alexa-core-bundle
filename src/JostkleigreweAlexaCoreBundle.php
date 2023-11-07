@@ -6,7 +6,6 @@ namespace Jostkleigrewe\AlexaCoreBundle;
 use Jostkleigrewe\AlexaCoreBundle\DependencyInjection\Compiler\IntentPass;
 use Jostkleigrewe\AlexaCoreBundle\Intent\IntentInterface;
 use Jostkleigrewe\AlexaCoreBundle\Service\IntentService;
-use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;

@@ -142,7 +142,9 @@ services:
   Jostkleigrewe\AlexaCoreBundle\Intent\IntentCollection:
     public: true
     autowire: true
-    arguments: ['!tagged_iterator alexa_core.intent']
+    arguments:
+      - !tagged_iterator alexa_core.intent
+
 
   # Commands
 

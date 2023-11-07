@@ -9,7 +9,7 @@ use Jostkleigrewe\AlexaCoreBundle\Service\IntentService;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 /**
  * Class JostkleigreweAlexaCoreBundle
@@ -18,7 +18,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * @author    Sven Jostkleigrewe <sven@jostkleigrewe.com>
  * @copyright 2023 Sven Jostkleigrewe
  */
-class JostkleigreweAlexaCoreBundle extends Bundle
+class JostkleigreweAlexaCoreBundle extends AbstractBundle
 {
 
     /**

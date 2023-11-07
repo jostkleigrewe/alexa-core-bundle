@@ -16,6 +16,10 @@
         <service id="Jostkleigrewe\AlexaCoreBundle\Manager\AlexaCoreManager" class="Jostkleigrewe\AlexaCoreBundle\Manager\AlexaCoreManager"  public="true" autowire="true">
         </service>
 
+        <!-- AlexaApiClientService -->
+        <service id="Jostkleigrewe\AlexaCoreBundle\Service\AlexaApiClientService" class="Jostkleigrewe\AlexaCoreBundle\Service\AlexaApiClientService"  public="true" autowire="true">
+        </service>
+
         <!-- AlexaCoreService -->
         <service id="Jostkleigrewe\AlexaCoreBundle\Service\AlexaCoreService" class="Jostkleigrewe\AlexaCoreBundle\Service\AlexaCoreService"  public="true" autowire="true">
             <!--<argument key="$serializer" type="service" id="JMS\Serializer\SerializerInterface" />-->

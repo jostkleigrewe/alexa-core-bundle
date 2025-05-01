@@ -1,0 +1,76 @@
+{
+    "name": "jostkleigrewe/alexa-core-bundle",
+    "type": "symfony-bundle",
+    "description": "AlexaCoreBundle for the Symfony Framework",
+    "keywords": [
+        "Jostkleigrewe",
+        "Alexa",
+        "Symfony",
+        "Bundle"
+    ],
+    "homepage": "https://projects.jostkleigrewe.com/jostkleigrewe/alexa-core-bundle/",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sven Jostkleigrewe",
+            "email": "sven@jostkleigrewe.com"
+        }
+    ],
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "require": {
+        "php": "^8.3",
+        "doctrine/doctrine-bundle": "^2.13",
+        "doctrine/orm": "^3.3",
+        "symfony/config": "^7.2",
+        "symfony/framework-bundle": "^7.2",
+        "symfony/http-client": "^7.2",
+        "symfony/serializer": "^7.2",
+        "symfony/uid": "^7.2",
+        "symfony/validator": "^7.2"
+    },
+    "require-dev": {
+        "jostkleigrewe/my-dev-environment": "dev-develop",
+        "phpstan/phpstan": "2.1.x-dev",
+        "psalm/plugin-symfony": "5.x-dev",
+        "rector/rector": "dev-main",
+        "squizlabs/php_codesniffer": "4.0.x-dev",
+        "symfony/test-pack": "dev-main",
+        "vimeo/psalm": "^7.0"
+    },
+    "conflict": {
+    },
+    "suggest": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Jostkleigrewe\\AlexaCoreBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jostkleigrewe\\AlexaCoreBundle\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+        }
+    },
+    "scripts": {
+        "phpunit": "vendor/bin/phpunit",
+        "phpunit-coverage": "XDEBUG_MODE=coverage @php-d vendor/bin/phpunit --coverage-html=var/coverage",
+        "rector": "vendor/bin/rector process --ansi",
+        "rector-dry": "vendor/bin/rector process --ansi --dry-run",
+        "docker-php": "docker compose exec php",
+        "phpstan": "vendor/bin/phpstan analyse",
+        "phpcbf": "vendor/bin/phpcbf",
+        "phpcs": "vendor/bin/phpcs",
+        "psalm": "vendor/bin/psalm --no-file-links",
+        "docker:psalm": "docker compose exec php vendor/bin/psalm --no-file-links"
+    }
+}

@@ -1,0 +1,2 @@
+jostkleigrewe_alexa_core:
+    allowed_application_ids: ['fooValue', 'barValue']

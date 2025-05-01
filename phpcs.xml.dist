@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ruleset name="Alexa Core Bundle Coding Standard">
+    <description>Custom coding standard for Alexa Core Bundle.</description>
+
+    <!-- Basisregel: PSR12, mit einem Ausschluss für leere Zeilen in Funktionsdeklarationen -->
+    <rule ref="PSR12">
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.EmptyLine"/>
+    </rule>
+
+    <!-- Ausschlüsse: Vendor- und Var-Verzeichnisse werden nicht geprüft -->
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/var/*</exclude-pattern>
+
+    <!-- Zu prüfende Verzeichnisse -->
+    <file>src</file>
+    <file>tests</file>
+
+    <!-- Anpassung der Zeilenlängenregel -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="150"/>
+            <property name="absoluteLineLimit" value="160"/>
+        </properties>
+    </rule>
+</ruleset>

@@ -1,0 +1,79 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Jostkleigrewe\AlexaCoreBundle\Service;
+
+//use Doctrine\ORM\EntityManagerInterface;
+//use Jostkleigrewe\AlexaCoreBundle\Dto\Request\AlexaRequest;
+//use Jostkleigrewe\AlexaCoreBundle\Entity\AlexaUser;
+//use Jostkleigrewe\AlexaCoreBundle\Repository\AlexaUserRepository;
+
+/**
+ * Class AlexaCoreService
+ *
+ * @package Jostkleigrewe\AlexaCoreBundle\Service
+ * @author Sven Jostkleigrewe <sven@jostkleigrewe.com>
+ */
+class AlexaUserService
+{
+//
+//    public function __construct(
+//        private readonly AlexaRequestService $alexaRequestService,
+//        private readonly AlexaUserRepository $alexaUserRepository,
+//        private readonly EntityManagerInterface $entityManager
+//    ) {
+//    }
+//
+//    public function getAlexaUserByAlexaRequest(AlexaRequest $alexaRequest): AlexaUser
+//    {
+//        $alexaUserId = $alexaRequest->session->user->userId;
+//        $user = $this->getAlexaUserRepository()->findOneByAlexaId($alexaUserId);
+//
+//        if ($user === null) {
+//            $user = $this->createAlexaUserByAlexaRequest($alexaRequest);
+//        }
+//
+//        return $user;
+//    }
+//
+//
+//    public function createAlexaUserByAlexaRequest(AlexaRequest $alexaRequest): AlexaUser
+//    {
+//        $user = new AlexaUser();
+//
+//        $alexaUserId = $alexaRequest->getSession()->getUser()->getUserId();
+//        $user->setAlexaId($alexaUserId);
+//
+//        $user->setRole('ROLE_USER');
+//
+//        $this->getEntityManager()->persist($user);
+//        $this->getEntityManager()->flush();
+//
+//        return $user;
+//    }
+//
+//    /**
+//     * @return AlexaUserRepository
+//     */
+//    public function getAlexaUserRepository(): AlexaUserRepository
+//    {
+//        return $this->alexaUserRepository;
+//    }
+//
+//    /**
+//     * @return AlexaRequestService
+//     */
+//    protected function getAlexaRequestService(): AlexaRequestService
+//    {
+//        return $this->alexaRequestService;
+//    }
+//
+//    /**
+//     * @return EntityManagerInterface
+//     */
+//    protected function getEntityManager(): EntityManagerInterface
+//    {
+//        return $this->entityManager;
+//    }
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="5"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    findUnusedBaselineEntry="false"
+    findUnusedCode="false"
+    findUnusedIssueHandlerSuppression="false"
+    ensureOverrideAttribute="false"
+>
+    <projectFiles>
+        <directory name="src" />
+    </projectFiles>
+
+    <issueHandlers>
+        <UndefinedClass>
+            <errorLevel type="suppress">
+                <!-- These classes have been added in PHP 8.1 -->
+                <referencedClass name="BackedEnum"/>
+                <referencedClass name="ReflectionIntersectionType"/>
+                <referencedClass name="UnitEnum"/>
+                <!-- These classes have been added in PHP 8.2 -->
+                <referencedClass name="Random\*"/>
+                <!-- These classes have been added in PHP 8.4 -->
+                <referencedClass name="BcMath\Number"/>
+            </errorLevel>
+        </UndefinedClass>
+    </issueHandlers>
+
+    <forbiddenFunctions>
+        <function name="empty"/>
+    </forbiddenFunctions>
+</psalm>

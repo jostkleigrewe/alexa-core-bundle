@@ -1,0 +1,200 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  symfony-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: [8.3, 8.4]
+    steps:
+      # Checke Repo aus
+      - uses: actions/checkout@v3
+
+      # Installiere PHP
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, iconv, sqlite3, intl
+
+      # Installiere Abhängigkeiten
+      - run: composer install --prefer-dist --no-progress
+
+      # PHPUNIT
+      - run: vendor/bin/phpunit --coverage-text
+
+      # PHPSTAN
+      #- run: vendor/bin/phpstan analyse --no-progress
+
+      # PSALM
+      - run: vendor/bin/psalm --no-progress
+
+      # PHPCS
+#      - run: vendor/bin/php-cs-fixer fix --dry-run --diff
+
+      # PHPCS
+#      - run: vendor/bin/phpcs --standard=PSR12,./vendor/escapestudios/symfony2-coding-standard/Symfony src tests
+
+
+#  - name: Coding Standards fix (optional)
+#    run: vendor/bin/phpcbf
+
+
+#  - name: Coding Standards fix
+#    run: |
+#      composer install --prefer-dist --no-progress
+#      vendor/bin/phpcbf --standard=PSR12 --extensions=php --ignore=*/vendor/* src tests
+#      # Wenn phpcbf noch Verstöße lässt, bricht der Job ab:
+#      vendor/bin/phpcs --standard=PSR12 src tests
+
+
+#name: CI
+#
+#on:
+#  push:
+#    branches: [develop, master]
+#  pull_request:
+#    branches: [develop, master]
+#
+#jobs:
+#  tests:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: 📥 Code auschecken
+#        uses: actions/checkout@v3
+#
+#      - name: ⚙️ PHP einrichten
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: '8.4'
+#
+#      - name: 📦 Composer-Abhängigkeiten installieren
+#        run: composer install --no-interaction
+#
+#      - name: ✅
+#
+
+#  php-cs-fixer:
+#    runs-on: ubuntu-latest
+#    name: Coding Standards
+#    steps:
+#      -   name: Checkout
+#          uses: actions/checkout@v4
+#
+#      -   name: Setup PHP
+#          uses: shivammathur/setup-php@v2
+#
+#          with:
+#            php-version: 8.3
+#            coverage: none
+#            tools: php-cs-fixer, cs2pr
+#
+#      -   name: Run PHP-CS-Fixer
+#          run: php-cs-fixer fix --dry-run --format checkstyle | cs2pr
+#
+#  test:
+#    runs-on: ubuntu-latest
+#    name: PHPUnit Tests
+#    strategy:
+#      fail-fast: false
+#      matrix:
+#        php: [ '7.2', '7.3', '7.4', '8.0', '8.1', '8.2', '8.3' ]
+#        monolog: [ '1.*', '2.*' ]
+#        include:
+#          -   php: '7.4'
+#              deps: lowest
+#              deprecations: max[self]=0
+#          -   php: '8.1'
+#              monolog: '3.*'
+#          -   php: '8.2'
+#              monolog: '3.*'
+#          -   php: '8.3'
+#              monolog: '3.*'
+#          -   php: '8.4'
+#              deps: highest
+#              monolog: '3.*'
+#    steps:
+#      -   name: Checkout
+#          uses: actions/checkout@v2
+#
+#      -   name: Setup PHP
+#          uses: shivammathur/setup-php@v2
+#          with:
+#            php-version: ${{ matrix.php }}
+#            ini-values: zend.exception_ignore_args=false
+#            tools: flex
+#
+#      -   name: Configure composer
+#          if: "${{ matrix.deps == 'highest' }}"
+#          run: composer config minimum-stability dev
+#
+#      -   name: Require Monolog version
+#          if: "${{ matrix.monolog != '' }}"
+#          run: composer require --no-update monolog/monolog:${{ matrix.monolog }}
+#
+#      -   name: Composer install
+#          uses: ramsey/composer-install@v1
+#          with:
+#            dependency-versions: '${{ matrix.deps }}'
+#
+#      -   name: Install PHPUnit dependencies
+#          run: vendor/bin/simple-phpunit install
+#
+#      -   name: Run tests
+#          run: vendor/bin/simple-phpunit -v --coverage-text
+#          env:
+#            SYMFONY_DEPRECATIONS_HELPER: '${{ matrix.deprecations }}'
+#
+#
+#    steps:
+#      - name: 📥 Checkout code
+#        uses: actions/checkout@v3
+#
+#      - name: ⚙️ Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: '8.4'
+#          coverage: xdebug
+#          extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_sqlite
+#
+#      - name: 🧰 Install Composer dependencies
+#        run: composer install --prefer-dist --no-interaction --no-progress
+#
+#      - name: 🔍 Code Quality: Rector (dry-run)
+#        run: composer rector-dry
+#
+#      - name: 🔎 Code Quality: PHPStan
+#        run: composer phpstan
+#
+#      - name: 🔬 Code Quality: Psalm
+#        run: vendor/bin/psalm --no-cache
+#
+#      - name: 🔠 Code Style: PHPCS
+#        run: composer phpcs
+#
+#      - name: ✅ Run Tests
+#        run: composer test
+#
+#      - name: 📊 Generate coverage report (optional)
+#        if: success()
+#        run: composer phpunit-coverage
+
+#jobs:
+#  deploy:
+#    runs-on: ubuntu-latest
+#    if: github.event_name == 'push' && contains(github.event.head_commit.message, '[deploy]')
+#
+#    steps:
+#      - name: Trigger Plesk deployment
+#        uses: appleboy/ssh-action@v0.1.10
+#        with:
+#          host: ${{ secrets.PLESK_HOST }}
+#          username: ${{ secrets.PLESK_USER }}
+#          password: ${{ secrets.PLESK_PASS }}
+#          script: |
+#            cd /var/www/vhosts/dein-projekt
+#            git pull origin main
+#            composer install --no-dev --optimize-autoloader
+#

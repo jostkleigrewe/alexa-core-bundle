@@ -1,0 +1,82 @@
+{
+    "name": "jostkleigrewe/alexa-core-bundle",
+    "type": "symfony-bundle",
+    "version": "0.0.1",
+    "description": "AlexaCoreBundle for the Symfony Framework",
+    "keywords": ["Jostkleigrewe", "Alexa", "Symfony", "Bundle"],
+    "homepage": "https://projects.jostkleigrewe.com/jostkleigrewe/alexa-core-bundle/",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sven Jostkleigrewe",
+            "email": "work@jostkleigrewe.com"
+        }
+    ],
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "require": {
+        "php": "^8.3",
+        "doctrine/doctrine-bundle": "^2.13",
+        "doctrine/orm": "^3.3",
+        "symfony/config": "^7.2",
+        "symfony/framework-bundle": "^7.2",
+        "symfony/http-client": "^7.2",
+        "symfony/serializer": "^7.2",
+        "symfony/uid": "^7.2",
+        "symfony/validator": "^7.2",
+        "zircote/swagger-php": "^5.0@dev"
+    },
+    "require-dev": {
+        "jostkleigrewe/my-dev-environment": "dev-develop",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0",
+        "phpunit/phpunit": "^12.2@dev",
+        "psalm/plugin-phpunit": "dev-master",
+        "psalm/plugin-symfony": "^5.0",
+        "rector/rector": "dev-main",
+        "squizlabs/php_codesniffer": "^4.0",
+        "symfony/phpunit-bridge": "7.3.x-dev",
+        "symfony/test-pack": "^1.0",
+        "vimeo/psalm": "^7.0"
+    },
+    "conflict": {
+    },
+    "suggest": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Jostkleigrewe\\AlexaCoreBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jostkleigrewe\\AlexaCoreBundle\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "phpunit-coverage": "XDEBUG_MODE=coverage @php-d vendor/bin/phpunit --coverage-html=var/coverage",
+        "rector": "vendor/bin/rector process --ansi",
+        "rector-dry": "vendor/bin/rector process --ansi --dry-run",
+        "docker-php": "docker compose exec php",
+        "phpstan": "vendor/bin/phpstan analyse src",
+        "phpcbf": "vendor/bin/phpcbf",
+        "phpcs": "vendor/bin/phpcs src",
+        "psalm": "vendor/bin/psalm",
+        "analyse": [
+            "composer phpcs",
+            "composer rector-dry",
+            "composer psalm"
+        ]
+    }
+}

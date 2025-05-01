@@ -1,0 +1,165 @@
+parameters:
+  jostkleigrewe_alexa_core.intent_collection.class: 'Jostkleigrewe\AlexaCoreBundle\Intent\IntentCollection'
+
+services:
+
+  # 🎯 Standard-Konfiguration für alle Services
+  _defaults:
+    public: false
+    autowire: true
+    autoconfigure: true
+
+
+  # Neu
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaRequestValidator: ~
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaIntentDispatcher: ~
+  Jostkleigrewe\AlexaCoreBundle\Service\PipelineLogger: ~
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaResponseSerializer: ~
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaResponseService:
+    arguments:
+      $debugMode: '%kernel.debug%'
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaCoreService:
+    arguments:
+       $debugMode: '%kernel.debug%'
+
+
+  # 📌 Application, User & Device Services
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaApplicationService: ~
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaUserService: ~
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaDeviceService: ~
+  Jostkleigrewe\AlexaCoreBundle\Service\AlexaSessionService: ~
+
+
+#  # 📌 Obsolet?
+#  Jostkleigrewe\AlexaCoreBundle\Service\AlexaCoreService: ~
+#
+#  Jostkleigrewe\AlexaCoreBundle\Service\AlexaRequestService: ~
+#  Jostkleigrewe\AlexaCoreBundle\Service\AlexaResponseService:
+#    arguments:
+#      $isDebug: '%kernel.debug%'
+#
+#  # 📌 Core Services (Request-Handling)
+#  Jostkleigrewe\AlexaCoreBundle\Service\AlexaRequestParserService: ~
+#  Jostkleigrewe\AlexaCoreBundle\Service\AlexaRequestValidator: ~
+##  Jostkleigrewe\AlexaCoreBundle\Service\AlexaIntentService: ~
+#  Jostkleigrewe\AlexaCoreBundle\Service\AlexaIntentDispatcherService: ~
+#  Jostkleigrewe\AlexaCoreBundle\Service\AlexaResponseFactory: ~
+#  Jostkleigrewe\AlexaCoreBundle\Service\AlexaResponseFormatterService: ~
+#
+#
+#  # 📌 Logging & API-Client
+#  Jostkleigrewe\AlexaCoreBundle\Service\AlexaApiClientService: ~
+#  Jostkleigrewe\AlexaCoreBundle\Service\AlexaRequestResponseLoggerService: ~
+
+  # 📌 Intents (Amazon Standard Intents)
+  Jostkleigrewe\AlexaCoreBundle\Intent\Amazon\Cancel:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Amazon\Fallback:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Amazon\Help:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Amazon\LaunchRequest:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Amazon\Pause:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Amazon\Resume:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Amazon\SessionEndedRequest:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Amazon\Stop:
+    tags: ['alexa_core.intent']
+
+
+  # 📌 Intents (AudioPlayer)
+  Jostkleigrewe\AlexaCoreBundle\Intent\AudioPlayer\PlaybackFailed:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\AudioPlayer\PlaybackFinished:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\AudioPlayer\PlaybackNearlyFinished:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\AudioPlayer\PlaybackStarted:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\AudioPlayer\PlaybackStopped:
+    tags: ['alexa_core.intent']
+
+  # 📌 Intents (Eigene Core Intents)
+  Jostkleigrewe\AlexaCoreBundle\Intent\Core\AlexaUserGetName:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Core\AlexaUserSetName:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Core\AlexaDeviceGetName:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Core\AlexaDeviceSetName:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Core\AlexaApplicationGetName:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\Core\AlexaApplicationSetName:
+    tags: ['alexa_core.intent']
+
+  Jostkleigrewe\AlexaCoreBundle\Intent\System\ExceptionEncountered:
+    tags: ['alexa_core.intent']
+
+  # 📌 Repository Services für Datenbankzugriffe (Doctrine)
+  Jostkleigrewe\AlexaCoreBundle\Repository\AlexaUserRepository:
+    tags: ['doctrine.repository_service']
+
+  Jostkleigrewe\AlexaCoreBundle\Repository\AlexaApplicationRepository:
+    tags: ['doctrine.repository_service']
+
+  Jostkleigrewe\AlexaCoreBundle\Repository\AlexaDeviceRepository:
+    tags: ['doctrine.repository_service']
+
+  Jostkleigrewe\AlexaCoreBundle\Repository\AlexaSessionRepository:
+    tags: ['doctrine.repository_service']
+
+  Jostkleigrewe\AlexaCoreBundle\Repository\AlexaSessionValueRepository:
+    tags: ['doctrine.repository_service']
+
+  Jostkleigrewe\AlexaCoreBundle\Repository\AlexaUserValueRepository:
+    tags: ['doctrine.repository_service']
+
+  Jostkleigrewe\AlexaCoreBundle\Repository\AlexaRequestResponseLogRepository:
+    tags: ['doctrine.repository_service']
+
+  # 📌 Intent-Verwaltung & Chain-of-Responsibility
+  Jostkleigrewe\AlexaCoreBundle\Intent\IntentCollection:
+    public: true
+    autowire: true
+    arguments:
+      - !tagged_iterator alexa_core.intent
+
+  # 📌 CLI-Befehle
+  Jostkleigrewe\AlexaCoreBundle\Command\DebugIntentsCommand:
+    public: true
+    autowire: true
+    tags: ['console.command']
+
+  # 📌 Event Subscriber (Middleware für Requests)
+  Jostkleigrewe\AlexaCoreBundle\EventSubscriber\ReturnJsonOnBadRequestSubscriber:
+    tags: ['kernel.event_subscriber']
+
+  Jostkleigrewe\AlexaCoreBundle\EventSubscriber\RequestResponseLoggerSubscriber:
+    tags: ['kernel.event_subscriber']
+
+  # 📌 Validatoren
+  Jostkleigrewe\AlexaCoreBundle\Validator\Constraint\AllowedApplicationIdValidator:
+    arguments:
+      $allowedApplicationIds: '%jostkleigrewe_alexa_core.allowed_application_ids%'
+    tags:
+      - { name: validator.constraint_validator }
